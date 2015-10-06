@@ -1,0 +1,93 @@
+{
+  "sounds": {
+    "kick": {
+      "name": "kick",
+      "file": "kick.wav"
+    },
+    "snare": {
+      "name": "snare",
+      "file": "snare.wav"
+    },
+    "rim": {
+      "name": "rim",
+      "file": "rim.wav"
+    },
+    "hihat": {
+      "name": "hihat",
+      "file": "hat.wav"
+    },
+    "hihat2": {
+      "name": "open hat",
+      "file": "hat2.wav"
+    },
+    "crash": {
+      "name": "crash",
+      "file": "crash.wav"
+    },
+    "ride": {
+      "name": "ride",
+      "file": "ride.wav"
+    },
+    "clap": {
+      "name": "clap",
+      "file": "clap.wav"
+    }
+  },
+  "channelsettings": {
+    "trigger": {
+      "type": "radio"
+    },
+    "separator" :{
+      "type": "separator"
+    },
+    "gain": {
+      "name": "Gain",
+      "type": "knob",
+      "values": {
+        "min": 0,
+        "max": 1,
+        "value": 0.7
+      }
+    },
+    "filter": {
+      "name": "Filter",
+      "type": "switch",
+      "value": 0
+    },
+    "filterQ": {
+      "name": "Filter Q",
+      "type": "knob",
+      "values": {
+        "min": 0,
+        "max": 35,
+        "value": 1
+      }
+    },
+    "filterFreq": {
+      "name": "Freq",
+      "type": "knob",
+      "values": {
+        "min": 50,
+        "max": 8000,
+        "value": 8000
+      }
+    },
+    "pan": {
+      "name": "Pan",
+      "type": "knob",
+      "values": {
+        "min": -1,
+        "max": 1,
+        "value": 0
+      }
+    },
+    "mute": {
+      "name": "Mute",
+      "type": "switch",
+      "value": 0
+    },
+    "separator2" :{
+      "type": "separator"
+    }
+  }
+}

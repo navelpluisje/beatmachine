@@ -1,0 +1,250 @@
+@import url(https://fonts.googleapis.com/css?family=Orbitron);
+
+* {
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+body {
+    background: radial-gradient(ellipse, #4270ce, #1e4e96);
+    color: #fff;
+    font-family: 'Orbitron', cursive;
+    font-weight: 300;
+    font-size: 14px;
+}
+
+div {
+    clear: both;
+}
+
+h4 {
+    font-weight: 300;
+    margin: 10px 0;
+}
+
+.main {
+    margin: 0 auto;
+    width: 866px;
+}
+
+.header {
+    display: block;
+    font-size: 24px;
+    padding: 20px 0;
+    text-shadow: 0 0 6px rgba(255, 255, 255, .7);
+}
+
+.knob {
+	transition: transform .5s ease;
+	background: rgba(255, 255, 255, .05);
+	border-color: #fff;
+	border-style: solid;
+	border-radius: 50%;
+	border-width: 1px;
+	box-sizing: border-box;
+	display: block;
+    margin: 0 auto;
+	position: relative;
+	width: 50px;
+	height: 50px;
+}
+
+.knob:after {
+	content: '';
+	background-color: #fff;
+	display: block;
+	height: 30%;
+	left: 50%;
+	position: absolute;
+	top: 0;
+	transform: translateX(-50%);
+	width: 2px;
+}
+
+.knob.large {
+    height: 75px;
+    width: 75px;
+}
+
+.knob.active {
+	transition: none;
+	border-color: #eee;
+	box-shadow: 0 0 5px 0 #eee, inset 0 0 5px 0 #eee;
+}
+
+.knob.active:after {
+	background-color: #eee;
+	box-shadow: 0 0 5px 0 #eee, inset 0 0 5px 0 #eee;
+}
+
+input[type=radio],
+input[type=checkbox] {
+    clip: rect(0,0,0,0);
+    position: absolute;
+}
+
+input[type=radio] + label,
+input[type=checkbox] + label {
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+}
+
+input[type=radio] + label {
+    border-radius: 50%;
+}
+
+input[type=radio]:checked + label,
+input[type=checkbox]:checked + label {
+    background-color: #fff;
+    border: 1px solid #fff;
+    box-shadow: 0 0 5px 0 #eee, inset 0 0 5px 0 #eee;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+}
+
+input[type=text] {
+    background: radial-gradient(ellipse, #fff, #ced);
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    color: #4270ce;
+    display: inline-block;
+    font-family: 'Orbitron', cursive;
+    font-size: 1.4em;
+    font-weight: 600;
+    margin: 0 5px 5px;
+    outline: none;
+    padding: 4px;
+    text-align: center;
+    width: calc(100% - 10px);
+}
+
+.button {
+    background: none;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    color: #fff;
+    font-family: 'Orbitron', cursive;
+    font-size: 1.1em;
+    line-height: 1;
+    margin: 5px 0 0;
+    padding: 7px 3px 4px;
+    vertical-align: bottom;
+}
+
+.button:active,
+.button:focus {
+    outline: none;
+}
+
+.button.active,
+.button:active {
+    background: rgba(255, 255, 255, .6);
+    border-color: #eee;
+    box-shadow: 0 0 5px 0 #eee, inset 0 0 5px 0 #eee;
+}
+
+.button.active {
+    background-color: #fff;
+    color: #4270ce;
+}
+
+.toggle-grid {
+    float: right;
+    font-size: 14px;
+}
+
+.channels {
+    height: 520px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    position: relative;
+    transition: height .3s ease;
+}
+
+.channels.collapse {
+    height: 150px;
+}
+
+.sequencer {
+    height: 300px;
+    overflow: hidden;
+    transition: height .3s ease;
+}
+
+.sequencer.collapse {
+    height: 27px;
+}
+
+.channel-strip {
+    border-right: 1px solid #fff;
+    float: left;
+    padding-bottom: 30px;
+    text-align: center;
+    width: 84px;
+}
+
+.trigger {
+    background: #4270ce;
+    bottom: 0;
+    position: absolute;
+    transform: translateX(-50%);
+}
+
+.channel-strip.large {
+    width: 180px;
+}
+
+.drumsets {
+    line-height: 1;
+    padding: 0 10px;
+    text-align: left;
+}
+
+.drumsets label {
+    margin: 0 10px 0 0;
+}
+
+.seq-row {
+    background-image:
+        linear-gradient(0deg, rgba(255, 255, 255, .3) 1px, transparent 0),
+        linear-gradient(90deg, rgba(255, 255, 255, .3) 1px, transparent 0);
+    background-size: 100% 30px, 27px 1px;
+    background-position: left 14px, 13px;
+    height: 27px;
+    width: calc(32 * 27px);
+}
+
+.seq-row input[type=checkbox] + label {
+    background-clip: content-box;
+    background-color: rgba(255, 255, 255, .8);
+    border-color: transparent;
+    border-radius: 50%;
+    height: 23px;
+    margin: 2px 2px 0;
+    padding: 7px;
+    width: 23px;
+}
+
+.seq-row input[type=checkbox]:checked + label {
+    background-color: #fff;
+    border-color: #fff;
+}
+
+.sequencer input[type=radio] + label {
+    height: 19px;
+    margin: 7px 4px 0;
+    width: 19px;
+}
+
+.sequencer input[type=radio   ]:checked + label {
+    background-clip: content-box;
+    background-color: #fff;
+    border-color: #fff;
+    padding: 3px;
+}

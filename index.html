@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="style/drum.css">
+        <title>BeatMaster</title>
+    </head>
+    <body>
+        <section class="main">
+            <div class="header" role="heading">
+                BeatMachine
+                <button class="button toggle-grid" id="toggle-grid">Grid</button>
+            </div>
+            <section class="channels">
+                <section id="channels">
+
+                </section>
+                <article class="channel-strip large">
+                    <h3>Controls</h3>
+                    <button id="seq-start" class="button">Start</button>
+                    <button id="seq-stop" class="button">Stop</button>
+                    <h4>Speed</h4>
+                    <input type="text" id="seq-speed-value" disabled>
+                    <span id="seq-speed" class="knob large" data-min="20" data-max="240" data-value="120"></span>
+                    <h4>Drumset</h4>
+                    <div class="drumsets">
+                        <p>
+                            <input type="radio" name="drumset" id="drumset1" value="909" checked/>
+                            <label for="drumset1"></label>Roland 909
+                        </p>
+                        <p>
+                            <input type="radio" name="drumset" id="drumset2" value="808"/>
+                            <label for="drumset2"></label>Roland 808
+                        </p>
+                        <p>
+                            <input type="radio" name="drumset" id="drumset3" value="hr16"/>
+                            <label for="drumset3"></label>Alesis HR 16
+                        </p>
+                        <p>
+                            <input type="radio" name="drumset" id="drumset4" value="linndrum"/>
+                            <label for="drumset4"></label>LinnDrum
+                        </p>
+                    </div>
+                    <hr/>
+                </article>
+            </section>
+            <div id="sequencer" class="sequencer collapse">
+            </div>
+        </section>
+
+        <script src="js/vendor/np-knob/src/npknob.js"></script>
+        <script src="js/globals.js"></script>
+        <script src="js/sound.js"></script>
+        <script src="js/sequencer.js"></script>
+        <script src="js/channel.js"></script>
+        <script src="js/app.js" defer></script>
+	</body>
+</html>
