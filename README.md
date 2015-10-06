@@ -2,6 +2,8 @@
 
 An easy to use simple drummachine.
 
+It has been written in pure javascript and has just one dependency, which I also made ([npKnob](https://bitbucket.org/Navelpluisje/npknob)) for the rotary knobs.
+
 ## How to beat? ##
 
 Each sound has a few settings. I will explain them from top down:
