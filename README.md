@@ -2,7 +2,8 @@
 
 An easy to use simple drummachine.
 
-It has been written in pure javascript and has just one dependency, which I also made ([npKnob](https://bitbucket.org/Navelpluisje/npknob)) for the rotary knobs.
+It has been written in pure javascript and has just one dependency, which I also made ([npKnob](https://bitbucket.org/Navelpluisje/npknob)) for the rotary knobs. 
+After cloning just run `bower install` and it will be included.
 
 ## How to beat? ##
 
