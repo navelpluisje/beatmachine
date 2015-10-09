@@ -77,12 +77,10 @@ App = function () {
 
     function _setEventBindings() {
         var drumsets = document.querySelectorAll('[name=drumset]'),
-            set;
+            i = 0;
 
-        for (set in drumsets) {
-            if (drumsets.hasOwnProperty(set)) {
-                drumsets[set].addEventListener('click', _setDrumkit)
-            }
+        for (i; i < drumsets.length; i += 1) {
+            drumsets[i].addEventListener('click', _setDrumkit);
         }
     }
 

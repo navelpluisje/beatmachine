@@ -11,7 +11,7 @@ var Channel = function (name, dom, file, settings) {
 
     function _addTitle(name) {
         var title   = document.createElement('h4');
-        title.innerText = uFirst(name);
+        title.textContent = uFirst(name);
         self.strip.appendChild(title);
 
     }
@@ -84,7 +84,7 @@ var Channel = function (name, dom, file, settings) {
 
         trigger.setAttribute('id', id);
         trigger.setAttribute('class', 'trigger button');
-        trigger.innerText = uFirst(self.channelName);
+        trigger.textContent = uFirst(self.channelName);
         trigger.addEventListener('click', function(){
             self.sound.play();
         });
@@ -148,7 +148,6 @@ var Channel = function (name, dom, file, settings) {
 
     function setStep(id, on) {
         self.steps[id] = on;
-        console.log(self.steps);
     }
 
     function trigger(position) {

@@ -1,0 +1,15 @@
+{
+  "name": "BeatMachine",
+  "version": "1.0.0",
+  "description": "A great little drummachine",
+  "main": "index.html",
+  "dependencies": {
+    "ddp-client": "^0.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Erwin Goossen<erwin@navelpluisje.nl>",
+  "license": "ISC"
+}
