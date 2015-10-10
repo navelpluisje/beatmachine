@@ -1,4 +1,4 @@
-var Channel = function (name, dom, file, settings) {
+var Channel = function (name, dom, file, key, settings) {
     var self = this;
 
     self.channelName = '';
@@ -6,6 +6,7 @@ var Channel = function (name, dom, file, settings) {
     self.strip = null;
     self.sound = null;
     self.knobs = null;
+    self.key   = null;
     self.steps = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
     self.settings = {};
 
@@ -130,16 +131,28 @@ var Channel = function (name, dom, file, settings) {
         _addTrigger();
     }
 
-    function _init(name, dom, file, settings) {
+    function _setEventBindings() {
+        if (key !== 0) {
+            document.addEventListener('keypress', function (e) {
+                if (e.keyCode === self.key) {
+                    self.sound.play();
+                }
+            })
+        }
+    }
+
+    function _init(name, dom, file, key, settings) {
         self.channelName = name;
         self.settings = settings;
         self.knobs = [];
+        self.key = key || 0;
         /**
          * Because we can only add to one dom element, we use querySelector
          */
         self.mixer = document.querySelector(dom);
         self.sound = new Sound(file);
         _createChannel();
+        _setEventBindings();
     }
 
     function setSound() {
@@ -160,7 +173,7 @@ var Channel = function (name, dom, file, settings) {
         }
     }
 
-    _init(name, dom, file, settings);
+    _init(name, dom, file, key, settings);
 
     return {
         trigger: trigger,

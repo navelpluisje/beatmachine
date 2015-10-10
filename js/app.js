@@ -55,7 +55,7 @@ App = function () {
         var i;
         for (i in self.settings.sounds) {
             if (self.settings.sounds.hasOwnProperty(i)) {
-                self.sounds[i] = new Channel(self.settings.sounds[i].name, '#channels', self.settings.sounds[i].file, self.settings.channelsettings);
+                self.sounds[i] = new Channel(self.settings.sounds[i].name, '#channels', self.settings.sounds[i].file, self.settings.sounds[i].key, self.settings.channelsettings);
             }
         }
     }

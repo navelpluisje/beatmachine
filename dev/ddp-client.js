@@ -64,3 +64,11 @@ ddpclient.connect(function(error, wasReconnect) {
         });
     }
 });
+
+/**
+ * Make the object global available for the app.
+ */
+app.ddpclient = ddpclient;
+
+
+
