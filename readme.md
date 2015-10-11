@@ -2,7 +2,7 @@
 
 An easy to use simple drummachine.
 
-It has been written in pure javascript and has just one dependency, which I also made ([npKnob](https://bitbucket.org/Navelpluisje/npknob)) for the rotary knobs. 
+It has been written in pure javascript and has just one dependency, which I also made ([npKnob](https://bitbucket.org/Navelpluisje/npknob)) for the rotary knobs.
 After cloning just `after cloning` below.
 
 ## How to beat? ##
@@ -14,7 +14,7 @@ Each sound has a few settings. I will explain them from top down:
 * **Filter Q**: The amount of filtering
 * **Freq**: The filter frequency
 * **Pan**: A bit to the left, a bit to the right.
-* **Mute**: Oh, be quite now 
+* **Mute**: Oh, be quite now
 
 ## Other controls ##
 
