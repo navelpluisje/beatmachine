@@ -24,22 +24,12 @@
                     <span id="seq-speed" class="knob large" data-min="20" data-max="240" data-value="120"></span>
                     <h4>Drumset</h4>
                     <div class="drumsets">
-                        <p>
-                            <input type="radio" name="drumset" id="drumset1" value="909" checked/>
-                            <label for="drumset1"></label>Roland 909
-                        </p>
-                        <p>
-                            <input type="radio" name="drumset" id="drumset2" value="808"/>
-                            <label for="drumset2"></label>Roland 808
-                        </p>
-                        <p>
-                            <input type="radio" name="drumset" id="drumset3" value="hr16"/>
-                            <label for="drumset3"></label>Alesis HR 16
-                        </p>
-                        <p>
-                            <input type="radio" name="drumset" id="drumset4" value="linndrum"/>
-                            <label for="drumset4"></label>LinnDrum
-                        </p>
+                        <select name="drumset">
+                            <option value="909">Roland TR909</option>
+                            <option value="808">Roland TR808</option>
+                            <option value="hr16">Alesis HR16</option>
+                            <option value="linndrum">LinnDrum</option>
+                        </select>
                     </div>
                     <hr/>
                 </article>

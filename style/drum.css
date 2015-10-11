@@ -24,6 +24,34 @@ h4 {
     margin: 10px 0;
 }
 
+dd {
+	margin: 0;
+}
+
+hr {
+	background-color: #fff;
+	border: none;
+	display: block;
+	height: 1px;
+
+}
+
+select {
+	background: none;
+	border: 1px solid #fff;
+	color: #fff;
+	display: block;
+	font-family: 'Orbitron', cursive;
+	font-size: 15px;
+	height: 30px;
+	line-height: 1.4;
+	width: 100%;
+}
+
+select:focus {
+	outline: none;
+}
+
 .main {
     margin: 0 auto;
     width: 866px;

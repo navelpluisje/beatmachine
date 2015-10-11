@@ -64,7 +64,7 @@ App = function () {
         var sound;
         init = init || false;
 
-        self.drumkit = document.querySelector('[name=drumset]:checked').value;
+        self.drumkit = document.querySelector('[name=drumset]').value;
 
         if (init) {
             for (sound in self.sounds) {
@@ -76,12 +76,9 @@ App = function () {
     }
 
     function _setEventBindings() {
-        var drumsets = document.querySelectorAll('[name=drumset]'),
-            i = 0;
+        var drumset = document.querySelector('[name=drumset]');
 
-        for (i; i < drumsets.length; i += 1) {
-            drumsets[i].addEventListener('click', _setDrumkit);
-        }
+        drumset.addEventListener('change', _setDrumkit);
     }
 
     function _init() {

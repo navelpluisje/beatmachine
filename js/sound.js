@@ -73,7 +73,7 @@ Sound = function (file) {
     }
 
     function getFile() {
-        var drumkit = document.querySelector('[name=drumset]:checked').value,
+        var drumkit = document.querySelector('[name=drumset]').value,
             httpRequest = new XMLHttpRequest();
         httpRequest.onload = function () {
             app.ac.decodeAudioData(httpRequest.response, function (buffer) {
