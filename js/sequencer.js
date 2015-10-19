@@ -8,7 +8,9 @@ Sequencer = function () {
         startButton = document.getElementById('seq-start'),
         stopButton = document.getElementById('seq-stop'),
         gridButton = document.getElementById('toggle-grid'),
+        connectToggle = document.getElementById('connect'),
         gridItems = document.getElementsByClassName('seq-step'),
+        spinner = document.querySelector('.spinner');
         speed = 120,
         speedDail  = new NpKnob('seq-speed'),
         speedValue = document.getElementById('seq-speed-value');
@@ -24,6 +26,21 @@ Sequencer = function () {
     function stop() {
         startButton.classList.remove('active');
         playing = false;
+    }
+
+    function ddpReconnect() {
+        var ddp = app.get('ddp');
+        /**
+         * If we're not connected we don't need to reconnect
+         */
+        if (ddp.isConnected()) {
+            spinner.classList.add('spinning');
+            ddp.close();
+            ddp.connect(
+                _ddpAdded,
+                _ddpChanged
+            );
+        }
     }
 
     function sequence() {
@@ -115,6 +132,46 @@ Sequencer = function () {
 
     function _toggleGridItem() {
         app.sounds[this.dataset.name].setStep(this.dataset.id, this.checked);
+        app.get('ddp').call('click', [this.id, this.checked]);
+    }
+
+    function _ddpChanged(id, oldFields, clearedFields, newFields) {
+        element = document.getElementById(id);
+        if (element.checked !== newFields.value) {
+            element.click();
+        }
+    }
+
+    function _ddpAdded(id, newFields) {
+        element = document.getElementById(id);
+        if (element.checked !== newFields.value) {
+            element.click();
+        }
+    }
+
+    function _toggleDdpConnection() {
+        if (this.checked && !app.get('ddp').isConnected()) {
+            spinner.classList.add('spinning');
+            app.get('ddp').connect(
+                _ddpAdded,
+                _ddpChanged
+            );
+        }
+        if (!this.checked && app.get('ddp').isConnected()) {
+            app.get('ddp').close();
+        }
+    }
+
+    function _handleConnectionEvent(evt) {
+        if (evt.detail.connected) {
+            spinner.classList.remove('spinning');
+        } else {
+            spinner.classList.remove('spinning');
+            if (connectToggle.checked) {
+                connectToggle.checked = false;
+            }
+        }
+        console.log(evt)
     }
 
     function _setEventBindings() {
@@ -126,6 +183,9 @@ Sequencer = function () {
         for (; i < gridItems.length; i += 1) {
             gridItems[i].addEventListener('change', _toggleGridItem);
         }
+        connectToggle.addEventListener('change', _toggleDdpConnection);
+
+        document.querySelector('body').addEventListener('ddp-connected', _handleConnectionEvent)
     }
 
     function _init() {
@@ -139,6 +199,7 @@ Sequencer = function () {
 
     return {
         start: start,
-        stop: stop
+        stop: stop,
+        ddpReconnect: ddpReconnect
     }
 };

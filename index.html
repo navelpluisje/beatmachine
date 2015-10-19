@@ -22,6 +22,7 @@
                     <h4>Speed</h4>
                     <input type="text" id="seq-speed-value" disabled>
                     <span id="seq-speed" class="knob large" data-min="20" data-max="240" data-value="120"></span>
+                    <hr/>
                     <h4>Drumset</h4>
                     <div class="drumsets">
                         <select name="drumset">
@@ -32,6 +33,28 @@
                         </select>
                     </div>
                     <hr/>
+                    <div class="connection-block" id="connection-block">
+                        <h4>
+                            <span class="spinner"></span> 
+                            Connect 
+                            <span class="menu context-open" data-id="connection-settings" data-context="connection-settings"></span>
+                        </h4>
+                        <input type="checkbox" name="connect" class="toggle" id="connect" value="1"/>
+                        <label for="connect"></label>
+                        <span>
+                            Multi-user                    
+                        </span>                        
+                        <div id="connection-settings" class="context connection">
+                            <span class="close context-close" data-context="connection-settings" data-type="ddp"></span>
+                            <div>
+                                <label>Host</label><input type="text" id="ddp-host" data-id="host">                            
+                            </div>
+                            <div>
+                                <label>Port</label><input type="text" id="ddp-port" data-id="port">
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
                 </article>
             </section>
             <div id="sequencer" class="sequencer collapse">
@@ -39,11 +62,12 @@
         </section>
 
         <script src="js/vendor/np-knob/src/npknob.js"></script>
+        <script src="js/ddp-client.js" defer></script>
         <script src="js/globals.js"></script>
+        <script src="js/ddp-handler.js"></script>
         <script src="js/sound.js"></script>
         <script src="js/sequencer.js"></script>
         <script src="js/channel.js"></script>
         <script src="js/app.js" defer></script>
-        <script src="js/ddp-client.js" defer></script>
 	</body>
 </html>

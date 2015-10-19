@@ -2,11 +2,16 @@ var App, app;
 App = function () {
     'use strict';
 
-    var self = this;
+    var self = this,
+        inpDdpHost = document.getElementById('ddp-host'),
+        inpDdpPort = document.getElementById('ddp-port'),
+        clsContext = document.querySelectorAll('.context-close'),
+        opnContext = document.querySelectorAll('.context-open');
 
     self.sequencer = null;
-    self.settings = null;
+    self.settings = {};
     self.ac = null;
+    self.ddp = null;
     self.drumkit = '909';
     self.sounds = {};
 
@@ -19,6 +24,8 @@ App = function () {
 
     function _setSettings(data) {
         self.settings = JSON.parse(data);
+        inpDdpHost.value = localStorage.getItem('host') || self.settings.ddp.host;
+        inpDdpPort.value = localStorage.getItem('port') || self.settings.ddp.port;
         return true;
     }
 
@@ -75,18 +82,45 @@ App = function () {
         }
     }
 
-    function _setEventBindings() {
-        var drumset = document.querySelector('[name=drumset]');
+    function _setSettingsField() {
+        localStorage.setItem(this.dataset.id, this.value);
+    }
 
+    function _closeContext() {
+        document.getElementById(this.dataset.context).style.display = 'none';
+        if (this.dataset.type === 'ddp') {
+            self.ddp.ddpclient.host = localStorage.getItem('host');
+            self.ddp.ddpclient.hort = localStorage.getItem('port');
+
+            self.sequencer.ddpReconnect();
+        }
+    }
+
+    function _openContext() {
+        document.getElementById(this.dataset.context).style.display = 'block';
+    }
+
+    function _setEventBindings() {
+        var drumset = document.querySelector('[name=drumset]'),
+            i;
         drumset.addEventListener('change', _setDrumkit);
+        inpDdpHost.addEventListener('change', _setSettingsField);
+        inpDdpPort.addEventListener('change', _setSettingsField);
+        for (i = 0; i < clsContext.length; i += 1) {
+            clsContext[i].addEventListener('click', _closeContext);
+        }
+        for (i = 0; i < opnContext.length; i += 1) {
+            opnContext[i].addEventListener('click', _openContext);
+        }
     }
 
     function _init() {
         _setEventBindings();
         if (_checkAudioContext()) {
             _getSettings().then(function (data) {
-                _setDrumkit();
                 _setSettings(data);
+                self.ddp = new DdpHandler();
+                _setDrumkit();
                 _createChannels();
                 _createSequencer();
             });
@@ -98,8 +132,10 @@ App = function () {
     return {
         get: get,
         ac: self.ac,
+        ddp: self.ddp,
         sounds: self.sounds,
-        drumkit: self.drumkit
+        drumkit: self.drumkit,
+        settings: self.settings,
     }
 };
 
