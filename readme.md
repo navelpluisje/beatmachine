@@ -32,14 +32,14 @@ Use your keyboard. The next keys are mapped:
 * **J**: Ride
 * **K**: Clap
 
-## Other controls ##
+### Other controls ###
 
 * **Start**: What would this one do??
 * **Stop**: The opposite of the previous one
 * **Speed**: Do you like it hardcore or laid back?
 * **Drumset**: Choose the sound you like
 
-## And........ ##
+### And........ ###
 
 * **grid**: Toggle the sequencer grid. Just click the small bubbles and press start for some unforgettable fun;-)
 
