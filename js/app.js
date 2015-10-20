@@ -45,8 +45,12 @@ App = function () {
     }
 
     function _checkAudioContext() {
+        var context = null;
         try {
-            self.ac = new AudioContext() || WebkitAudioContext() || MozAudioContext();
+            context = window.AudioContext || window.webkitAudioContext || false;
+            if (context) {
+                self.ac = new context(); 
+            }
             return true;
         } catch (e) {
             alert("This app doesn't seem to be available for your browser. Sorry about that. We recommend Firefox or Chrome")

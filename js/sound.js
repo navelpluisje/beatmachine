@@ -37,10 +37,15 @@ Sound = function (file) {
          */
         var acSound = app.ac.createBufferSource(),
             acGain = app.ac.createGain(),
-            acPanner = app.ac.createStereoPanner(),
+            acPanner = false,
             acFilter = app.ac.createBiquadFilter();
+
         acSound.buffer = self.buffer;
 
+        if (app.ac.createStereoPanner !== undefined) {
+            acPanner = app.ac.createStereoPanner();
+            acPanner.pan.value = self.pan;
+        }
         /**
          * Set the Gain, Panner, and Filter
          */
@@ -49,7 +54,6 @@ Sound = function (file) {
         } else {
             acGain.gain.value = self.gain;
         }
-        acPanner.pan.value = self.pan;
         acFilter.Q.value = self.filterQ;
         acFilter.frequency.value = self.filterFreq;
 
@@ -57,12 +61,20 @@ Sound = function (file) {
          * Connect everything together
          */
         if (self.filter) {
-            acSound.connect(acPanner);
-            acPanner.connect(acFilter);
+            if (acPanner) {
+                acSound.connect(acPanner);
+                acPanner.connect(acFilter);                
+            } else {
+                acSound.connect(acFilter);
+            }
             acFilter.connect(acGain);
         } else {
-            acSound.connect(acPanner);
-            acPanner.connect(acGain);
+            if (acPanner) {
+                acSound.connect(acPanner);
+                acPanner.connect(acGain);                
+            } else {
+                acSound.connect(acGain);
+            }
         }
         acGain.connect(app.ac.destination);
 
