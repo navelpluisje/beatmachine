@@ -69,6 +69,11 @@ App = function () {
                 self.sounds[i] = new Channel(self.settings.sounds[i].name, '#channels', self.settings.sounds[i].file, self.settings.sounds[i].key, self.settings.channelsettings);
             }
         }
+        /**
+         * Add the bass Channel
+         */
+        self.sounds['bass'] = new Channel('Bass', '#channels', null, null, self.settings.basssettings);
+        
     }
 
     function _setDrumkit(init) {

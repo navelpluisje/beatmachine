@@ -9,6 +9,7 @@ var Channel = function (name, dom, file, key, settings) {
     self.key   = null;
     self.steps = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
     self.settings = {};
+    self.bass = false;
 
     function _addTitle(name) {
         var title   = document.createElement('h4');
@@ -58,6 +59,40 @@ var Channel = function (name, dom, file, key, settings) {
         theSwitch.addEventListener('change', function () {
             self.sound.set(index, theSwitch.checked);
         })
+    }
+
+     function _addRadioGroup(element, index) {
+        var id = self.channelName + '-' + index,
+            radio = [],
+            label,
+            i = 0,
+            groupWrapper = document.createElement('span');
+
+        groupWrapper.classList.add('multi-select');
+
+        for (i; i < element.values.length; i += 1) {
+            radio[i] = document.createElement('input');
+            radio[i].setAttribute('type', 'radio');
+            radio[i].setAttribute('name', index)
+            radio[i].classList.add(element.values[i]);
+            radio[i].id = element.values[i];  
+
+            label = document.createElement('label');
+            label.setAttribute('for', element.values[i]); 
+
+            groupWrapper.appendChild(radio[i]);
+            groupWrapper.appendChild(label);         
+        }
+
+        self.strip.appendChild(groupWrapper);
+
+        for (i = 0; i < radio.length; i += 1 ) {
+            radio[i].addEventListener('click', function() {
+                if (this.checked) {
+                    self.sound.set(index, this.getAttribute('class'));                
+                }
+            });
+        }
     }
 
     function _addRadio() {
@@ -110,6 +145,10 @@ var Channel = function (name, dom, file, key, settings) {
                 if (self.settings[setting].type === 'radio') {
                     _addRadio();
                 }
+                if (self.settings[setting].type === 'radiogroup') {
+                    _addTitle(self.settings[setting].name);
+                    _addRadioGroup(self.settings[setting], setting);
+                }
             }
         }
     }
@@ -128,7 +167,9 @@ var Channel = function (name, dom, file, key, settings) {
          */
         _addStrip(self.strip);
         _addSettings();
-        _addTrigger();
+        if (self.settings.type !== 'bass') {
+            _addTrigger();        
+        }
     }
 
     function _setEventBindings() {
@@ -150,7 +191,14 @@ var Channel = function (name, dom, file, key, settings) {
          * Because we can only add to one dom element, we use querySelector
          */
         self.mixer = document.querySelector(dom);
-        self.sound = new Sound(file);
+
+        if (file) {
+            self.sound = new Sound(file);        
+        } else {
+            self.bass = true;
+            self.sound = new BassSynth();
+        }
+
         _createChannel();
         _setEventBindings();
     }
@@ -163,9 +211,17 @@ var Channel = function (name, dom, file, key, settings) {
         self.steps[id] = on;
     }
 
+    function getStep(id) {
+        return self.steps[id];
+    }
+
+    function getSteps() {
+        return self.steps;
+    }
+
     function trigger(position) {
         if (self.steps[position]) {
-            self.sound.play();
+            self.sound.play(self.steps[position]);
             document.getElementById('led-' + self.channelName).checked = true;
         } else {
             document.getElementById('led-' + self.channelName).checked = false;
@@ -178,6 +234,9 @@ var Channel = function (name, dom, file, key, settings) {
     return {
         trigger: trigger,
         setStep: setStep,
-        setSound: setSound
+        getStep: getStep,
+        setSound: setSound,
+        sound: self.sound,
+        getSteps: getSteps,
     };
 };

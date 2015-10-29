@@ -103,7 +103,7 @@ option {
 
 .main {
     margin: 0 auto;
-    width: 866px;
+    width: 946px;
 }
 
 .header {
@@ -219,6 +219,7 @@ input[type=checkbox]:checked.toggle + label::after {
 input[type=checkbox].toggle + label + span {
     vartical-align: middle;
 }
+
 input[type=text] {
     background: radial-gradient(ellipse, #fff, #ced);
     border: 1px solid #fff;
@@ -235,6 +236,101 @@ input[type=text] {
     width: calc(100% - 10px);
 }
 
+/* Multi select radio */
+.multi-select {
+  display: inline-block;
+  margin: -3px 0;
+}
+
+.multi-select input[type=radio] + label {
+  border-radius: 0;
+  float: left;
+  height: 21px;
+  margin: 0 -1px 0 0;
+  position: relative;
+  width: 21px;
+}
+
+.triangle + label:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 13px;
+  height: 13px;
+  background-image: 
+    linear-gradient(-45deg, transparent 8px, #fff 8px, #fff 9px, transparent 9px),
+    linear-gradient(90deg, transparent 12px, #fff 12px); 
+}
+
+.triangle:checked + label:after {
+  background-image: 
+    linear-gradient(-45deg, transparent 8px, #4270ce 8px, #4270ce 9px, transparent 9px),
+    linear-gradient(90deg, transparent 12px, #4270ce 12px); 
+}
+
+.square + label:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 13px;
+  height: 13px;
+  background-image: linear-gradient(180deg, #fff 1px, transparent 0),
+    linear-gradient(90deg, transparent 12px, #fff 12px),
+    linear-gradient(90deg, transparent 6px, #fff 6px, #fff 7px, transparent 7px),
+    linear-gradient(90deg, #fff 1px, transparent 1px),
+    linear-gradient(0deg, #fff 1px, transparent 0); 
+  background-repeat: no-repeat;
+  background-size: 7px 13px, 100% 100%, 100% 100%, 100% 100%, 7px 13px;
+  background-position: top left, center, center, center, bottom right;
+}
+
+.square:checked + label:after {
+  background-image: linear-gradient(180deg, #4270ce 1px, transparent 0),
+    linear-gradient(90deg, transparent 12px, #4270ce 12px),
+    linear-gradient(90deg, transparent 6px, #4270ce 6px, #4270ce 7px, transparent 7px),
+    linear-gradient(90deg, #4270ce 1px, transparent 1px),
+    linear-gradient(0deg, #4270ce 1px, transparent 0); 
+}
+
+.sine + label:before,
+.sine + label:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 5px;
+  height: 6px;
+  border-style: solid;
+  border-color: #fff;
+}
+
+.sine + label:after {
+  top: 3px;
+  left: 3px;
+  border-width: 1px 1px 0;
+  border-top-left-radius:     4px 7px;
+  border-top-right-radius:    4px 7px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius:  0;
+}
+
+.sine + label:before {
+  bottom: 3px;
+  right: 3px;
+  border-width: 0 1px 1px;
+  border-top-left-radius:     0;
+  border-top-right-radius:    0;
+  border-bottom-right-radius: 4px 7px;
+  border-bottom-left-radius:  4px 7px;
+}
+
+.sine:checked + label:before,
+.sine:checked + label:after {
+  border-color: #4270ce;
+}
 .button {
     background: none;
     border: 1px solid #fff;
@@ -328,10 +424,24 @@ input[type=text] {
     background-size: 100% 30px, 27px 1px;
     background-position: left 14px, 13px;
     height: 27px;
+    margin-left: 70px;
     width: calc(32 * 27px);
 }
 
-.seq-row input[type=checkbox] + label {
+.seq-step-leds {
+  margin-left: 70px;
+}
+
+.seq-step-leds .title,
+.seq-row .title {
+  display: inline-block;
+  margin-left: -70px;
+  vertical-align: super;
+  width: 70px;
+}
+
+.seq-row input[type=checkbox] + label,
+.seq-row input[type=radio] + label {
     background-clip: content-box;
     background-color: rgba(255, 255, 255, .8);
     border-color: transparent;
@@ -342,18 +452,19 @@ input[type=text] {
     width: 23px;
 }
 
-.seq-row input[type=checkbox]:checked + label {
+.seq-row input[type=checkbox]:checked + label,
+.seq-row input[type=radio]:checked + label {
     background-color: #fff;
     border-color: #fff;
 }
 
-.sequencer input[type=radio] + label {
+.seq-step-leds input[type=radio] + label {
     height: 19px;
     margin: 7px 4px 0;
     width: 19px;
 }
 
-.sequencer input[type=radio   ]:checked + label {
+.seq-step-leds input[type=radio]:checked + label {
     background-clip: content-box;
     background-color: #fff;
     border-color: #fff;

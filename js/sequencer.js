@@ -3,11 +3,14 @@ Sequencer = function () {
     var playing = false,
         steps = 32,
         position = steps -1,
+        grid = 'drum',
         channels = document.querySelector('.channels'),
         sequencer = document.getElementById('sequencer'),
+        bassline = document.getElementById('bassline'),
         startButton = document.getElementById('seq-start'),
         stopButton = document.getElementById('seq-stop'),
         gridButton = document.getElementById('toggle-grid'),
+        bassButton = document.getElementById('toggle-bass'),
         connectToggle = document.getElementById('connect'),
         gridItems = document.getElementsByClassName('seq-step'),
         spinner = document.querySelector('.spinner');
@@ -65,7 +68,7 @@ Sequencer = function () {
         }, 15000 / speed);
     }
 
-    function _createStep(id, name) {
+    function _createStep(id, name, on) {
         var check = document.createElement('input');
         check.dataset.id = id;
         check.dataset.name = name;
@@ -73,23 +76,90 @@ Sequencer = function () {
         check.setAttribute('type', 'checkbox');
         check.setAttribute('class', 'seq-step step-' + id);
 
+        check.addEventListener('change', _toggleGridItem);
+
+        if (on) {
+            check.checked = true;
+        }
         return check;
     }
 
+    function _setBassItem() {
+        if (app.sounds.bass.getStep(+this.dataset.id) === this.dataset.freq) {
+            app.sounds.bass.setStep(+this.dataset.id, false);
+            this.checked = false;
+        } else {
+            app.sounds.bass.setStep(+this.dataset.id, this.dataset.freq);
+        }
+    }
+
+    function _createBassStep(id, value, note) {
+        var check = document.createElement('input');
+        check.dataset.id = id;
+        check.dataset.freq = note.freq;
+        check.classList.add('seq-step', 'step-' + id);
+        check.id = note.id + '-' + id;
+        check.setAttribute('type', 'radio');
+        check.setAttribute('name', 'bass-' + id);
+
+        check.addEventListener('click', _setBassItem);
+
+        if (note.freq == value) {
+            check.checked = true;
+        }
+        return check;
+    }
+
+    function _createRowLabel(name) {
+        var label = document.createElement('label');
+        label.textContent = uFirst(name);
+        label.classList.add('title');
+
+        return label;
+    }
+
     function _createSequence(name) {
+        if (name === 'bass') { return false; }
         var i = 0,
-            row = document.createElement('div');
+            row = document.createElement('div'),
+            triggers = app.sounds[name].getSteps();
+
         row.setAttribute('class', 'seq-row');
+        row.appendChild(_createRowLabel(name));
 
         for (; i < steps; i += 1) {
             var label = document.createElement('label');
             label.setAttribute('for', name + '-' + i);
 
-            row.appendChild(_createStep(i, name));
+            row.appendChild(_createStep(i, name, triggers[i]));
             row.appendChild(label);
         }
 
         sequencer.appendChild(row);
+    }
+
+    function _createBassSequence() {
+        var i = 0,
+            triggers = app.sounds.bass.getSteps(),
+            notes = app.sounds.bass.sound.getNotes();
+
+
+        notes.forEach(function (note) {
+            var row = document.createElement('div');
+            row.setAttribute('class', 'seq-row');
+            row.appendChild(_createRowLabel(note.name));
+
+            for (i = 0; i < steps; i += 1) {
+                var label = document.createElement('label');
+                label.setAttribute('for', note.id + '-' + i);
+
+                row.appendChild(_createBassStep(i, triggers[i], note));
+                row.appendChild(label);
+            }
+
+            sequencer.appendChild(row);
+        });
+
     }
 
     function _createStatusbar() {
@@ -97,6 +167,7 @@ Sequencer = function () {
             row = document.createElement('div');
 
         row.setAttribute('class', 'seq-step-leds');
+        row.appendChild(_createRowLabel(''));
 
         for (; i < steps; i +=1) {
             var label = document.createElement('label');
@@ -127,6 +198,31 @@ Sequencer = function () {
         } else {
             sequencer.classList.add('collapse');
             channels.classList.remove('collapse');
+        }
+    }
+
+    function _toggleBass() {
+        var rows = document.querySelectorAll('.seq-row'),
+            i = 0;
+
+        if (grid === 'drum') {
+            this.textContent = 'Drum';
+            grid = 'bass';
+
+            for (i; i < rows.length; i += 1) {
+                rows[i].remove();            
+            }
+
+            _createBassSequence();
+        } else {
+            this.textContent = 'Bass';
+            grid = 'drum';
+
+            for (i; i < rows.length; i += 1) {
+                rows[i].remove();            
+            }
+
+            Object.keys(app.sounds).forEach(_createSequence);
         }
     }
 
@@ -180,6 +276,8 @@ Sequencer = function () {
         stopButton.addEventListener('click', stop);
         speedDail.obj.addEventListener('knob-rotate', _setSpeed);
         gridButton.addEventListener('click', _toggleGrid);
+        bassButton.addEventListener('click', _toggleBass);
+
         for (; i < gridItems.length; i += 1) {
             gridItems[i].addEventListener('change', _toggleGridItem);
         }
