@@ -10,7 +10,7 @@ This nice piece of Dutch engineering works with the following browsers:
 Chrome, Firefox (With serverconnection from version 44, currently nightly), Safari, iOS9 (Yep, works on da iPad).
 
 ---
-###[The sequencer](/wiki/Howto-sequencer.md)###
-###[The beatz](Howto-beat.md)###
-###[The bass](Howto-bass.md)###
-###[The server](Howto-server.md)###
+###[The sequencer](https://bitbucket.org/Navelpluisje/beatmachine/wiki/Howto-sequencer.md)###
+###[The beatz](https://bitbucket.org/Navelpluisje/beatmachine/wiki/Howto-beat.md)###
+###[The bass](https://bitbucket.org/Navelpluisje/beatmachine/wiki/Howto-bass.md)###
+###[The server](https://bitbucket.org/Navelpluisje/beatmachine/wiki/Howto-server.md)###
