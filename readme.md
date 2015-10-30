@@ -10,6 +10,7 @@ This nice piece of Dutch engineering works with the following browsers:
 Chrome, Firefox (With serverconnection from version 44, currently nightly), Safari, iOS9 (Yep, works on da iPad).
 
 ---
+###[Home](https://bitbucket.org/Navelpluisje/beatmachine/wiki/Home.md)###
 ###[The sequencer](https://bitbucket.org/Navelpluisje/beatmachine/wiki/Howto-sequencer.md)###
 ###[The beatz](https://bitbucket.org/Navelpluisje/beatmachine/wiki/Howto-beat.md)###
 ###[The bass](https://bitbucket.org/Navelpluisje/beatmachine/wiki/Howto-bass.md)###
