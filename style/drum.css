@@ -194,6 +194,7 @@ input[type=checkbox].toggle + label {
     border-radius: 15px;
     height: 30px;
     position: relative;
+    transition: all .3s ease;
     vertical-align: middle;
     width: 45px;
 }
@@ -208,18 +209,22 @@ input[type=checkbox].toggle + label::after {
     left : 3px;
     position: absolute;
     top: 3px;
+    transition: left .3s ease;
     width: 20px;
 }
 
 input[type=checkbox]:checked.toggle + label::after {
-    left: auto;
-    right: 3px;
+    left: 19px;
+    border-color: #90a8cd;
 }
 
 input[type=checkbox].toggle + label + span {
-    vartical-align: middle;
+    vertical-align: middle;
 }
 
+/*
+Textfield
+ */
 input[type=text] {
     background: radial-gradient(ellipse, #fff, #ced);
     border: 1px solid #fff;

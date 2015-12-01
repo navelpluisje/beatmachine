@@ -13,6 +13,12 @@ Sound = function (file) {
     self.filterQ = 1;
     self.filterFreq = 8000;
 
+    /**
+     * Set one of the properties values
+     *
+     * @param {string} key   Name of th eproperty to set
+     * @param {any} value The value
+     */
     function set(key, value) {
         if (key[0] === '_') {
             return false;
@@ -20,6 +26,13 @@ Sound = function (file) {
         self[key] = value;
     }
 
+    /**
+     * Get the value of the given key
+     *
+     * @param  {string} key The name of the value
+     *
+     * @return {any} 
+     */
     function get(key) {
         if (key[0] === '_') {
             return false;
