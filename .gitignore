@@ -1,2 +1,5 @@
 .idea
-js/vendor
+dist
+node_modules
+flow-typed
+src/old

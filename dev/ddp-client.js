@@ -1,1 +1,0 @@
-window.DDPClient = require('ddp-client');
