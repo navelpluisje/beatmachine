@@ -2,10 +2,15 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getStepCount, getCurrentStep } from '../../../../../../store/selectors/sequencer';
+import {
+  getStepCount,
+  getCurrentStep,
+  getLoop,
+} from '../../../../../../store/selectors/sequencer';
 import {
   setNextStepCount,
   setPreviousStepCount,
+  toggleLoop as toggleSequenceLoop,
 } from '../../../../../../store/actions/sequencer';
 import Button from '../../../../../../elements/button';
 import StatusLed from '../../../../../../elements/statusLed';
@@ -14,11 +19,13 @@ import { StyledSteps, StepGroup, ButtonBar } from './steps.styled';
 type StateProps = {
   step: number,
   current: number,
+  loop: boolean,
 }
 
 type DispatchProps = {
   next: Function,
   previous: Function,
+  toggleLoop: Function,
 }
 
 type Props = StateProps & DispatchProps;
@@ -30,10 +37,12 @@ class Steps extends Component<Props> {
     const {
       current,
       step,
+      loop,
     } = this.props;
     if (
       Math.trunc(current / 16) === Math.trunc(nextProps.current / 16) &&
-      step === nextProps.step
+      step === nextProps.step &&
+      loop === nextProps.loop
     ) {
       return false;
     }
@@ -61,8 +70,10 @@ class Steps extends Component<Props> {
     const {
       current,
       step,
+      loop,
       next,
       previous,
+      toggleLoop,
     } = this.props;
 
     return (
@@ -86,6 +97,14 @@ class Steps extends Component<Props> {
           </Button>
           <Button
             size="small"
+            color="green"
+            active={loop}
+            onClick={toggleLoop} // eslint-disable-line
+          >
+            &#8634;
+          </Button>
+          <Button
+            size="small"
             onClick={next} // eslint-disable-line
           >
             &#8680;
@@ -99,11 +118,13 @@ class Steps extends Component<Props> {
 const mapStateToProps = (state: *): StateProps => ({
   step: getStepCount(state),
   current: getCurrentStep(state),
+  loop: getLoop(state) !== -1,
 });
 
 const mapDispatchToProps = (dispatch: Function): DispatchProps => ({
   next: () => dispatch(setNextStepCount()),
   previous: () => dispatch(setPreviousStepCount()),
+  toggleLoop: () => dispatch(toggleSequenceLoop()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Steps);

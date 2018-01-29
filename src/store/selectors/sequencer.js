@@ -29,6 +29,12 @@ export const getStepCount = (state: GlobalState): SequencerStepCount =>
 export const getEditGroup = (state: GlobalState): number =>
   getState(state).editGroup;
 
+export const getLoop = (state: GlobalState): number =>
+  getState(state).loop;
+
+export const hasLoop = (state: GlobalState): boolean =>
+  getState(state).loop !== -1;
+
 export const getNextStepCount = (state: GlobalState): number => {
   const sequencer = getState(state);
 

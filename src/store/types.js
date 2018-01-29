@@ -13,6 +13,7 @@ export type SequencerState = {
   editGroup: number,
   currentStep: number,
   activeChannel: string,
+  loop: number,
 };
 
 export type Drumkit = 'TR808' | 'TR909' | 'HR16' | 'LINNDRUM';

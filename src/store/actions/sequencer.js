@@ -7,6 +7,7 @@ import {
   SEQUENCER_SET_STEP_COUNT,
   SEQUENCER_SET_CURRENT_STEP,
   SEQUENCER_SET_EDIT_GROUP,
+  SEQUENCER_SET_LOOP,
 } from '../constants';
 import type {
   SequencerSpeed,
@@ -23,6 +24,7 @@ import {
   getPreviousStepCount,
   getCurrentStep,
   getStepCount,
+  getLoop,
   isRunning,
 } from '../selectors/sequencer';
 import { getActiveSounds } from '../selectors/channels';
@@ -51,16 +53,24 @@ export const setSequencerEditGroup = (group: number): SequencerSetEditGroup => (
 });
 
 export const setNextStep = () =>
-  (dispatch: Function, getState: Function) => {
+  (dispatch: Dispatch<*>, getState: Function) => {
     const state = getState();
     if (!isRunning(state)) { return false; }
 
-    const step = getCurrentStep(state);
+    let step = getCurrentStep(state) + 1;
     const max = getStepCount(state);
-    const next = step === max - 1 ? 0 : step + 1;
     const master = getMaster(state);
+    const loop = getLoop(state);
 
-    const sounds = getActiveSounds(state, next).reduce((accumulator, sound) => {
+    if (loop === -1 && (step === max || (max < step && step % 16 === 0))) {
+      step = 0;
+    }
+
+    if (loop > -1 && (Math.floor(step / 16) === loop + 1 && step % 16 === 0)) {
+      step = loop * 16;
+    }
+
+    const sounds = getActiveSounds(state, step).reduce((accumulator, sound) => {
       const result = [...accumulator];
       result.push({
         sound,
@@ -73,7 +83,7 @@ export const setNextStep = () =>
     dispatch({
       type: SEQUENCER_SET_CURRENT_STEP,
       meta: {
-        step: next,
+        step,
         sounds,
         master,
       },
@@ -81,7 +91,7 @@ export const setNextStep = () =>
   };
 
 export const setNextStepCount = () =>
-  (dispatch: Function, getState: Function) => {
+  (dispatch: Dispatch<*>, getState: Function) => {
     dispatch({
       type: SEQUENCER_SET_STEP_COUNT,
       steps: getNextStepCount(getState()),
@@ -89,10 +99,26 @@ export const setNextStepCount = () =>
   };
 
 export const setPreviousStepCount = () =>
-  (dispatch: Function, getState: Function) => {
+  (dispatch: Dispatch<*>, getState: Function) => {
     dispatch({
       type: SEQUENCER_SET_STEP_COUNT,
       steps: getPreviousStepCount(getState()),
+    });
+  };
+
+export const toggleLoop = () =>
+  (dispatch: Dispatch<*>, getState: Function) => {
+    const state = getState();
+    let loop = getLoop(state);
+    if (loop === -1) {
+      loop = Math.floor(getCurrentStep(state) / 16);
+    } else {
+      loop = -1;
+    }
+
+    dispatch({
+      type: SEQUENCER_SET_LOOP,
+      loop,
     });
   };
 

@@ -9,6 +9,7 @@ import {
   SEQUENCER_SET_CURRENT_STEP,
   SEQUENCER_SET_ACTIVE_CHANNEL,
   SEQUENCER_SET_EDIT_GROUP,
+  SEQUENCER_SET_LOOP,
 } from '../constants';
 import type { SequencerActions } from '../actions/types';
 import type { SequencerState } from '../types';
@@ -21,6 +22,7 @@ const defaultSequencer: SequencerState = {
   currentStep: -1,
   editGroup: -1,
   activeChannel: '',
+  loop: -1,
 };
 
 export default (
@@ -50,6 +52,7 @@ export default (
       isRunning: false,
       isStopped: true,
       currentStep: -1,
+      loop: -1,
     };
 
   case SEQUENCER_SET_STEP_COUNT:
@@ -75,6 +78,12 @@ export default (
     return {
       ...state,
       activeChannel: action.channel,
+    };
+
+  case SEQUENCER_SET_LOOP:
+    return {
+      ...state,
+      loop: action.loop,
     };
 
   default:

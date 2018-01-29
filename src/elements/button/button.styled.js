@@ -44,6 +44,7 @@ export default styled.button`
 
   ${(props: Props) => props.size === 'small' && css`
     font-size: .75rem;
+    font-weight: 800;
     padding: .1rem .5rem;
   `};
 

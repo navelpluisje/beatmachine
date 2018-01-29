@@ -17,6 +17,8 @@ export const SEQUENCER_SET_ACTIVE_CHANNEL: 'beatMachine/Sequencer/SEQUENCER_SET_
   'beatMachine/Sequencer/SEQUENCER_SET_ACTIVE_CHANNEL';
 export const SEQUENCER_SET_EDIT_GROUP: 'beatMachine/Sequencer/SEQUENCER_SET_EDIT_GROUP' =
   'beatMachine/Sequencer/SEQUENCER_SET_EDIT_GROUP';
+export const SEQUENCER_SET_LOOP: 'beatMachine/Sequencer/SEQUENCER_SET_LOOP' =
+  'beatMachine/Sequencer/SEQUENCER_SET_LOOP';
 
 export const DRUMKIT_SET_ACTIVE: 'beatMachine/Drumkit/DRUMKIT_SET_ACTIVE' =
   'beatMachine/Drumkit/DRUMKIT_SET_ACTIVE';
