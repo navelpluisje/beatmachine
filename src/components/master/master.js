@@ -7,6 +7,7 @@ import {
   Title,
   Content,
   Distortion,
+  Logo,
 } from './atoms';
 import Encoder from '../../elements/encoder';
 import { setVolume as setMasterVolume } from '../../store/actions/master';
@@ -24,23 +25,26 @@ type StateProps = {
 type Props = StateProps & DispatchProps;
 
 const Master = ({ setVolume, volume }: Props) => (
-  <Container>
-    <Title>Master</Title>
-    <Content>
-      <Distortion />
-      <Encoder
-        size="75px"
-        color="light"
-        min={0}
-        max={1.5}
-        step={2}
-        value={volume}
-        backgroundColor="#33333a"
-        label="Volume"
-        onChange={value => setVolume(value)}
-      />
-    </Content>
-  </Container>
+  <div>
+    <Container>
+      <Title>Master</Title>
+      <Content>
+        <Distortion />
+        <Encoder
+          size="75px"
+          color="light"
+          min={0}
+          max={1.5}
+          step={2}
+          value={volume}
+          backgroundColor="#33333a"
+          label="Volume"
+          onChange={value => setVolume(value)}
+        />
+      </Content>
+    </Container>
+    <Logo>BeatMachine</Logo>
+  </div>
 );
 
 const mapStateToProps = (state: GlobalState) => ({

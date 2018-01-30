@@ -29,6 +29,7 @@ export const MatrixButton = styled(Button)`
   flex: 1;
   margin: 0 .25rem;
   padding: .25rem;
+  z-index: 1;
 
   &:last-of-type {
     margin-right: 0;

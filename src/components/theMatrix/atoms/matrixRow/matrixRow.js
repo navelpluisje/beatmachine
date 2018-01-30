@@ -46,7 +46,7 @@ const MatrixRow = ({
           (editGroup !== -1 && selected(getIndex(index, editGroup)))}
         onClick={() => step(getIndex(index, editGroup))}
       >
-        {index}
+        {index + 1}
       </MatrixButton>
     ))}
   </StyledMatrixRow>

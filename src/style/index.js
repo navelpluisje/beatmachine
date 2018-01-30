@@ -5,11 +5,13 @@ import reset from 'styled-reset';
 import {
   DSEG,
   RobotoCondensed,
+  RacingSansOne,
 } from './fonts';
 
 export default () => injectGlobal`
   ${DSEG}
   ${RobotoCondensed}
+  ${RacingSansOne}
   ${reset}
 
   body {
