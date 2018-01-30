@@ -22,14 +22,19 @@ export const getActiveSounds = (state: GlobalState, step: number): Array<string>
     .map(item => item[0])
 );
 
-export const isSelectedStep = (state: GlobalState, step: number): boolean => {
-  const channels = getState(state);
+export const isSelectedStep =
+  (state: GlobalState, step: number, channel: ?string = null): boolean => {
+    const channels = getState(state);
 
-  if (channels.activeChannel === '') {
+    if (channel && channels.channels[channel]) {
+      return channels.channels[channel][step];
+    }
+
+    if (channels.activeChannel !== '') {
+      return channels.channels[channels.activeChannel][step];
+    }
+
     return false;
-  }
-
-  return channels.channels[channels.activeChannel][step];
-};
+  };
 
 export default null;

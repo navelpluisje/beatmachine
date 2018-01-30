@@ -6,7 +6,7 @@ import globalStyle from './style';
 import beatStore from './store/store';
 import TopBar from './components/topBar';
 import Sequencer from './components/sequencer';
-import Channels from './components/channels';
+import BottomBar from './components/bottomBar';
 
 const store = beatStore();
 
@@ -17,7 +17,7 @@ export default () => {
       <div style={{ maxWidth: '1024px', margin: '0 auto' }}>
         <TopBar />
         <Sequencer />
-        <Channels />
+        <BottomBar />
       </div>
     </ReduxProvider>
   );

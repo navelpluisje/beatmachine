@@ -14,6 +14,7 @@ export type SequencerState = {
   currentStep: number,
   activeChannel: string,
   loop: number,
+  showGrid: boolean,
 };
 
 export type Drumkit = 'TR808' | 'TR909' | 'HR16' | 'LINNDRUM';

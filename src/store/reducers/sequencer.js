@@ -10,6 +10,7 @@ import {
   SEQUENCER_SET_ACTIVE_CHANNEL,
   SEQUENCER_SET_EDIT_GROUP,
   SEQUENCER_SET_LOOP,
+  SEQUENCER_TOGGLE_GRID,
 } from '../constants';
 import type { SequencerActions } from '../actions/types';
 import type { SequencerState } from '../types';
@@ -23,6 +24,7 @@ const defaultSequencer: SequencerState = {
   editGroup: -1,
   activeChannel: '',
   loop: -1,
+  showGrid: false,
 };
 
 export default (
@@ -84,6 +86,12 @@ export default (
     return {
       ...state,
       loop: action.loop,
+    };
+
+  case SEQUENCER_TOGGLE_GRID:
+    return {
+      ...state,
+      showGrid: !state.showGrid,
     };
 
   default:

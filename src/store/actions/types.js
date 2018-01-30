@@ -14,6 +14,7 @@ import {
   SEQUENCER_SET_STEP_COUNT,
   SEQUENCER_SET_CURRENT_STEP,
   SEQUENCER_SET_EDIT_GROUP,
+  SEQUENCER_TOGGLE_GRID,
   DRUMKIT_SET_ACTIVE,
   CHANNELS_SET_STEP,
   CHANNELS_SET_ACTIVE_CHANNEL,
@@ -61,6 +62,10 @@ export type SequencerSetEditGroup = {
   meta: {
     group: number,
   },
+};
+
+export type SequencerToggleGrid = {
+  type: typeof SEQUENCER_TOGGLE_GRID,
 };
 
 export type SequencerActions =

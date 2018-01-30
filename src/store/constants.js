@@ -19,6 +19,8 @@ export const SEQUENCER_SET_EDIT_GROUP: 'beatMachine/Sequencer/SEQUENCER_SET_EDIT
   'beatMachine/Sequencer/SEQUENCER_SET_EDIT_GROUP';
 export const SEQUENCER_SET_LOOP: 'beatMachine/Sequencer/SEQUENCER_SET_LOOP' =
   'beatMachine/Sequencer/SEQUENCER_SET_LOOP';
+export const SEQUENCER_TOGGLE_GRID: 'beatMachine/Sequencer/SEQUENCER_TOGGLE_GRID' =
+  'beatMachine/Sequencer/SEQUENCER_TOGGLE_GRID';
 
 export const DRUMKIT_SET_ACTIVE: 'beatMachine/Drumkit/DRUMKIT_SET_ACTIVE' =
   'beatMachine/Drumkit/DRUMKIT_SET_ACTIVE';

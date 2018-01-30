@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import { connect } from 'react-redux';
 import {
   Container,
   Title,
@@ -8,11 +9,24 @@ import {
   Status,
   StatusTitle,
   Switch,
+  GridSettings,
 } from './atoms';
 import Led from '../../elements/led';
 import Button from '../../elements/button';
+import { toggleSequencerGrid } from '../../store/actions/sequencer';
+import { showGrid } from '../../store/selectors/sequencer';
 
-export default () => (
+type StateProps = {
+  grid: boolean,
+}
+
+type DispatchProps = {
+  toggleGrid: Function,
+}
+
+type Props = StateProps & DispatchProps;
+
+const Connection = ({ grid, toggleGrid }: Props) => (
   <Container>
     <Title>Connection</Title>
     <Content>
@@ -49,5 +63,24 @@ export default () => (
         />
       </Status>
     </Content>
+    <GridSettings>
+      <Button
+        active={grid}
+        color="yellow"
+        onClick={toggleGrid}
+      >
+       &#9776;
+      </Button>
+    </GridSettings>
   </Container>
 );
+
+const mapStateToProps = (state: *): StateProps => ({
+  grid: showGrid(state),
+});
+
+const mapDispatchToProps = (dispatch: Dispatch<*>): DispatchProps => ({
+  toggleGrid: () => dispatch(toggleSequencerGrid()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Connection);

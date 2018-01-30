@@ -35,6 +35,9 @@ export const getLoop = (state: GlobalState): number =>
 export const hasLoop = (state: GlobalState): boolean =>
   getState(state).loop !== -1;
 
+export const showGrid = (state: GlobalState): boolean =>
+  getState(state).showGrid;
+
 export const getNextStepCount = (state: GlobalState): number => {
   const sequencer = getState(state);
 

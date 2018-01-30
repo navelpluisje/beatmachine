@@ -8,6 +8,7 @@ import {
   SEQUENCER_SET_CURRENT_STEP,
   SEQUENCER_SET_EDIT_GROUP,
   SEQUENCER_SET_LOOP,
+  SEQUENCER_TOGGLE_GRID,
 } from '../constants';
 import type {
   SequencerSpeed,
@@ -18,6 +19,7 @@ import type {
   SequencerSetRunning,
   SequencerSetStopped,
   SequencerSetEditGroup,
+  SequencerToggleGrid,
 } from './types';
 import {
   getNextStepCount,
@@ -50,6 +52,10 @@ export const setSequencerEditGroup = (group: number): SequencerSetEditGroup => (
   meta: {
     group,
   },
+});
+
+export const toggleSequencerGrid = (): SequencerToggleGrid => ({
+  type: SEQUENCER_TOGGLE_GRID,
 });
 
 export const setNextStep = () =>
