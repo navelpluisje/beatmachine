@@ -2,10 +2,12 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import StyledMatrixRow, { MatrixLabel, MatrixButton } from './matrixRow.styled';
+import StyledMatrixRow from './matrixRow.styled';
 import { getCurrentStep, getEditGroup } from '../../../../store/selectors/sequencer';
 import { setStep } from '../../../../store/actions/channels';
 import { isSelectedStep } from '../../../../store/selectors/channels';
+import MatrixButton from '../matrixButton';
+import MatrixLabel from '../matrixLabel';
 
 type DispatchProps = {
   step: Function,
@@ -44,7 +46,7 @@ const MatrixRow = ({
         active={
           current % 16 === index ||
           (editGroup !== -1 && selected(getIndex(index, editGroup)))}
-        onClick={() => step(getIndex(index, editGroup))}
+        onClick={() => step(getIndex(index, editGroup), !selected(getIndex(index, editGroup)))}
       >
         {index + 1}
       </MatrixButton>
@@ -59,7 +61,7 @@ const mapStateToProps = (state: *, props: OwnProps): StateProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<*>, props: OwnProps): DispatchProps => ({
-  step: (step: number) => dispatch(setStep(step, props.channel)),
+  step: (step: number, value: boolean) => dispatch(setStep(step, props.channel, value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MatrixRow);

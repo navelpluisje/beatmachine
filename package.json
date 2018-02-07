@@ -9,7 +9,8 @@
     "test": "jest",
     "postinstall": "flow-typed install",
     "build": "webpack -p",
-    "start:dev": "webpack-dev-server"
+    "start:dev": "webpack-dev-server",
+    "start:dev-ssl": "webpack-dev-server --https --cert ./localhost.crt --key ./localhost.key"
   },
   "author": "Erwin Goossen <erwin@navelpluisje.nl>",
   "license": "ISC",
@@ -42,6 +43,7 @@
     "webpack-monitor": "^1.0.14"
   },
   "dependencies": {
+    "@navelpluisje/ddp-client": "file:///Users/erwin/Documents/Workspace/node-ddp-client",
     "@navelpluisje/np-knob": "^2.0.1",
     "cuid": "^2.0.2",
     "react": "^16.2.0",
@@ -49,6 +51,7 @@
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1",
     "styled-components": "^2.4.0",
     "styled-reset": "^0.1.3"
   }

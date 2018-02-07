@@ -36,6 +36,8 @@ export const SOUND_TOGGLE_SOLO: 'beatMachine/Sound/SOUND_TOGGLE_SOLO' =
 
 export const CHANNELS_SET_STEP: 'beatMachine/Sound/CHANNELS_SET_STEP' =
   'beatMachine/Sound/CHANNELS_SET_STEP';
+export const CHANNELS_SET_STEP_DDP: 'beatMachine/Sound/CHANNELS_SET_STEP_DDP' =
+  'beatMachine/Sound/CHANNELS_SET_STEP_DDP';
 export const CHANNELS_SET_ACTIVE_CHANNEL: 'beatMachine/Sound/CHANNELS_SET_ACTIVE_CHANNEL' =
   'beatMachine/Sound/CHANNELS_SET_ACTIVE_CHANNEL';
 
@@ -45,5 +47,8 @@ export const MASTER_SET_DISTORTION: 'beatMachine/Sound/MASTER_SET_DISTORTION' =
   'beatMachine/Sound/MASTER_SET_DISTORTION';
 export const MASTER_TOGGLE_DISTORTION: 'beatMachine/Sound/MASTER_TOGGLE_DISTORTION' =
   'beatMachine/Sound/MASTER_TOGGLE_DISTORTION';
+
+export const DDP_TOGGLE_CONNECTED: 'beatMachine/Sound/DDP_TOGGLE_CONNECTED' =
+  'beatMachine/Sound/DDP_TOGGLE_CONNECTED';
 
 export default null;

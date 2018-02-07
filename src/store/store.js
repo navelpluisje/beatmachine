@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import soundsMiddleware from '../middleware/soundsMiddleware';
 import sequencerMiddleware from '../middleware/sequencerMiddleware';
+import ddpMiddleware from '../middleware/ddpMiddleware';
 import { SOUNDS } from '../constants';
 import type { GlobalState } from './types';
 import type { AllActions } from './actions/types';
@@ -26,6 +27,7 @@ const makeStore = (initialState: Object = {}): Store<GlobalState, AllActions> =>
         ...middleware,
         soundsMiddleware(SOUNDS),
         sequencerMiddleware(),
+        ddpMiddleware('127.0.0.1', 3000),
       ),
       ...composers,
     ),

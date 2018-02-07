@@ -6,6 +6,7 @@ import drumkit from './drumkit';
 import sounds from './sounds';
 import channels from './channels';
 import master from './master';
+import ddp from './ddp';
 
 export default combineReducers({
   sequencer,
@@ -13,4 +14,5 @@ export default combineReducers({
   sounds,
   channels,
   master,
+  ddp,
 });

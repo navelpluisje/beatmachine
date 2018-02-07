@@ -15,25 +15,35 @@ import Led from '../../elements/led';
 import Button from '../../elements/button';
 import { toggleSequencerGrid } from '../../store/actions/sequencer';
 import { showGrid } from '../../store/selectors/sequencer';
+import { toggleDdpConnection } from '../../store/actions/ddp';
+import { isConnected } from '../../store/selectors/ddp';
 
 type StateProps = {
   grid: boolean,
+  connected: boolean,
 }
 
 type DispatchProps = {
   toggleGrid: Function,
+  toggleConnection: Function,
 }
 
 type Props = StateProps & DispatchProps;
 
-const Connection = ({ grid, toggleGrid }: Props) => (
+const Connection = ({
+  grid,
+  toggleGrid,
+  connected,
+  toggleConnection,
+}: Props) => (
   <Container>
     <Title>Connection</Title>
     <Content>
       <Switch>
         <Button
           color="green"
-          active={false}
+          active={connected}
+          onClick={toggleConnection}
         >
           &#9901;
         </Button>
@@ -48,7 +58,7 @@ const Connection = ({ grid, toggleGrid }: Props) => (
         <StatusTitle>Status</StatusTitle>
         <Led
           label="Connected"
-          active={false}
+          active={connected}
           color="green"
         />
         <Led
@@ -77,10 +87,12 @@ const Connection = ({ grid, toggleGrid }: Props) => (
 
 const mapStateToProps = (state: *): StateProps => ({
   grid: showGrid(state),
+  connected: isConnected(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<*>): DispatchProps => ({
   toggleGrid: () => dispatch(toggleSequencerGrid()),
+  toggleConnection: () => dispatch(toggleDdpConnection()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Connection);

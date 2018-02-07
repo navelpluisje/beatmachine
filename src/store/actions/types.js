@@ -17,12 +17,14 @@ import {
   SEQUENCER_TOGGLE_GRID,
   DRUMKIT_SET_ACTIVE,
   CHANNELS_SET_STEP,
+  CHANNELS_SET_STEP_DDP,
   CHANNELS_SET_ACTIVE_CHANNEL,
   SOUND_PLAY_ONE,
   SOUND_SET_SETTING,
   SOUND_TOGGLE_SETTING,
   SOUND_TOGGLE_SOLO,
   MASTER_SET_VOLUME,
+  DDP_TOGGLE_CONNECTED,
 } from '../constants';
 
 export type SequencerSetInitial = {
@@ -81,6 +83,16 @@ export type ChannelsSetStep = {
   meta: {
     channel: string,
     step: number,
+    value: ?boolean,
+  }
+}
+
+export type ChannelsSetStepDdp = {
+  type: typeof CHANNELS_SET_STEP_DDP,
+  meta: {
+    channel: string,
+    step: number,
+    value: boolean | null,
   }
 }
 
@@ -91,7 +103,8 @@ export type ChannelsSetActiveChannel = {
 
 export type ChannelsActions =
   ChannelsSetStep |
-  ChannelsSetActiveChannel;
+  ChannelsSetActiveChannel |
+  ChannelsSetStepDdp;
 
 export type DrumkitSetActive= {
   type: typeof DRUMKIT_SET_ACTIVE,
@@ -155,8 +168,17 @@ export type MasterSetVolume = {
 export type MasterActions =
   MasterSetVolume;
 
+export type DdpToggleConnection = {
+  type: typeof DDP_TOGGLE_CONNECTED,
+  connected: boolean,
+};
+
+export type DdpActions =
+  DdpToggleConnection;
+
 export type AllActions =
   SoundsActions |
   DrumkitActions |
   SequencerActions |
-  ChannelsActions;
+  ChannelsActions |
+  DdpActions;

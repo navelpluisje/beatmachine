@@ -53,10 +53,15 @@ export type MasterState = {
   hasDistortion: boolean,
 };
 
+export type DdpState = {
+  connected: boolean,
+};
+
 export type GlobalState = {
   sequencer: SequencerState,
   drumkit: DrumkitState,
   sounds: SoundsState,
   channels: ChannelsState,
   master: MasterState,
+  ddp: DdpState,
 }

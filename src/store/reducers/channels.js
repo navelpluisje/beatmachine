@@ -2,6 +2,7 @@
 
 import {
   CHANNELS_SET_STEP,
+  CHANNELS_SET_STEP_DDP,
   CHANNELS_SET_ACTIVE_CHANNEL,
 } from '../constants';
 import { SOUNDS } from '../../constants';
@@ -20,9 +21,26 @@ const initialChannels: ChannelsState = {
 export default (state: ChannelsState = initialChannels, action: ChannelsActions): ChannelsState => {
   switch (action.type) {
   case CHANNELS_SET_STEP: {
-    const { channel, step } = action.meta;
+    const { channel, step, value } = action.meta;
+    if (value === state.channels[channel][step]) {
+      return state;
+    }
     const newState = { ...state };
-    newState.channels[channel][step] = !state.channels[channel][step];
+    newState.channels[channel][step] =
+      (value !== null && value !== undefined) ? value : !state.channels[channel][step];
+
+    return newState;
+  }
+
+  case CHANNELS_SET_STEP_DDP: {
+    const { channel, step, value } = action.meta;
+    if (value === state.channels[channel][step]) {
+      return state;
+    }
+
+    const newState = { ...state };
+    newState.channels[channel][step] =
+      (value !== null && value !== undefined) ? value : !state.channels[channel][step];
 
     return newState;
   }
