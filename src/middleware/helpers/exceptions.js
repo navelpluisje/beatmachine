@@ -16,4 +16,12 @@ export class WorkerException extends Error {
   }
 }
 
+export class DDPException extends Error {
+  constructor(message: string) {
+    super();
+    this.name = 'DDPException';
+    this.message = message || 'A ddp-error occured.';
+  }
+}
+
 export default null;

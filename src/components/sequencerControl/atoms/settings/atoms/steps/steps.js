@@ -75,7 +75,6 @@ class Steps extends Component<Props> {
       previous,
       toggleLoop,
     } = this.props;
-
     return (
       <StyledSteps>
         <StepGroup>

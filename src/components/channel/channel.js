@@ -17,7 +17,7 @@ import {
   getSolo,
 } from '../../store/selectors/sounds';
 import {
-  isActiveChannel,
+  getActiveChannel,
 } from '../../store/selectors/channels';
 import {
   playSingleSound,
@@ -152,7 +152,7 @@ const mapStateToProps = (state: GlobalState, ownProps: OwnProps): StateProps => 
   pan: getPan(state, ownProps.sound),
   mute: getMute(state, ownProps.sound),
   solo: getSolo(state, ownProps.sound),
-  active: isActiveChannel(state, ownProps.sound),
+  active: getActiveChannel(state) === ownProps.sound,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<*>, ownProps: OwnProps): DispatchProps => ({
