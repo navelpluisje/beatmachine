@@ -32,9 +32,6 @@ export const Switch = styled.div`
   flex-direction: column;
 
   ${Button} {
-    font-size: 2rem;
-    padding: 0 1rem;
-
     &:first-of-type {
       margin-bottom: .5rem;
     }

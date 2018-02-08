@@ -46,10 +46,16 @@ class DdpHandler {
 
   createClient() {
     this.ddpclient = null;
-    const options = {
+    let options = {
       host: this.host,
       port: this.port,
     };
+
+    if (this.port === 0) {
+      options = {
+        url: this.host,
+      };
+    }
 
     this.ddpclient = new DDPClient(options);
   }

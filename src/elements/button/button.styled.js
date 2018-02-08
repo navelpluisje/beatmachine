@@ -37,6 +37,7 @@ export default styled.button`
   border-radius: .25rem;
   color: rgba(0, 0, 0, .7);
   font-size: 1rem;
+  line-height: 1;
   margin: 0 .5rem;
   padding: .5rem 1rem;
   text-align: center;
@@ -45,7 +46,7 @@ export default styled.button`
   ${(props: Props) => props.size === 'small' && css`
     font-size: .75rem;
     font-weight: 800;
-    padding: .1rem .5rem;
+    padding: .2rem .5rem .1rem;
   `};
 
   ${(props: Props) => props.active && props.color && buttonActiveState(props)};

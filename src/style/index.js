@@ -6,12 +6,14 @@ import {
   DSEG,
   RobotoCondensed,
   RacingSansOne,
+  BeatMachine,
 } from './fonts';
 
 export default () => injectGlobal`
   ${DSEG}
   ${RobotoCondensed}
   ${RacingSansOne}
+  ${BeatMachine}
   ${reset}
 
   body {

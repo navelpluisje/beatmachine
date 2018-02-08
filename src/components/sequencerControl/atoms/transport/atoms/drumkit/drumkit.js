@@ -10,6 +10,7 @@ import {
   setPreviousDrumkit,
 } from '../../../../../../store/actions/drumkit';
 import { getDrumkit } from '../../../../../../store/selectors/drumkit';
+import Icon from '../../../../../icons';
 
 type StateProps = {
   drumkit: string,
@@ -38,13 +39,13 @@ const Drumkit = ({
         size="small"
         onClick={previous}
       >
-        &#8678;
+        <Icon icon="arrowLeft" />
       </Button>
       <Button
         size="small"
         onClick={next} // eslint-disable-line
       >
-        &#8680;
+        <Icon icon="arrowRight" />
       </Button>
     </ButtonBar>
   </Container>
