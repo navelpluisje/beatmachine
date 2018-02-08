@@ -47,6 +47,10 @@ export default styled.button`
     font-size: .75rem;
     font-weight: 800;
     padding: .2rem .5rem .1rem;
+
+    i {
+      font-weight: 800;
+    }
   `};
 
   ${(props: Props) => props.active && props.color && buttonActiveState(props)};
