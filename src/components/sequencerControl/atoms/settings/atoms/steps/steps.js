@@ -15,6 +15,7 @@ import {
 import Button from '../../../../../../elements/button';
 import StatusLed from '../../../../../../elements/statusLed';
 import { StyledSteps, StepGroup, ButtonBar } from './steps.styled';
+import Icon from '../../../../../icons';
 
 type StateProps = {
   step: number,
@@ -92,7 +93,7 @@ class Steps extends Component<Props> {
             size="small"
             onClick={previous}
           >
-            &#8678;
+            <Icon icon="arrowLeft" />
           </Button>
           <Button
             size="small"
@@ -100,13 +101,13 @@ class Steps extends Component<Props> {
             active={loop}
             onClick={toggleLoop} // eslint-disable-line
           >
-            &#8634;
+            <Icon icon="loop" />
           </Button>
           <Button
             size="small"
             onClick={next} // eslint-disable-line
           >
-            &#8680;
+            <Icon icon="arrowRight" />
           </Button>
         </ButtonBar>
       </StyledSteps>

@@ -17,6 +17,7 @@ import { toggleSequencerGrid } from '../../store/actions/sequencer';
 import { showGrid } from '../../store/selectors/sequencer';
 import { toggleDdpConnection } from '../../store/actions/ddp';
 import { isConnected } from '../../store/selectors/ddp';
+import Icon from '../icons';
 
 type StateProps = {
   grid: boolean,
@@ -45,13 +46,13 @@ const Connection = ({
           active={connected}
           onClick={toggleConnection}
         >
-          &#9901;
+          <Icon icon="connect" />
         </Button>
         <Button
           active={false}
           color="white"
         >
-          &#9999;
+          <Icon icon="edit" />
         </Button>
       </Switch>
       <Status>
@@ -79,7 +80,7 @@ const Connection = ({
         color="yellow"
         onClick={toggleGrid}
       >
-       &#9776;
+        <Icon icon="grid" />
       </Button>
     </GridSettings>
   </Container>

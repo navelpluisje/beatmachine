@@ -13,6 +13,7 @@ import {
   isRunning,
   isStopped,
 } from '../../../../../../store/selectors/sequencer';
+import Icon from '../../../../../icons';
 
 type StateProps = {
   running: boolean,
@@ -55,14 +56,14 @@ class Controls extends Component<Props, *> {
             color="red"
             onClick={this.handleStopButonClick}
           >
-            &#9632;
+            <Icon icon="stop" />
           </Button>
           <Button
             active={running}
             color="green"
             onClick={this.handlePlayButonClick}
           >
-            &#9658;
+            <Icon icon={running ? 'pause' : 'play'} />
           </Button>
         </StyledControls>
       </Container>
