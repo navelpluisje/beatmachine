@@ -7,7 +7,8 @@ export default styled.section`
   border-color: #181818 #34343584 #34343584 #181818;
   border-style: solid;
   border-width: 1px;
-  flex: 2;
+  flex-grow: 2;
+  flex-shrink: 0;
   font-family: DSEG;
   font-size: ${props => (props.small ? '1rem' : '2rem')};
   height: ${props => (props.small ? '1rem' : '2.6rem')};

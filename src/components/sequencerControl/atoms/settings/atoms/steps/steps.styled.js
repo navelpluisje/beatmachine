@@ -1,6 +1,7 @@
 // @flow
 
 import styled from 'styled-components';
+import Button from '../../../../../../elements/button/button.styled';
 
 export const StepGroup = styled.section`
   display: flex;
@@ -10,6 +11,15 @@ export const StepGroup = styled.section`
 export const ButtonBar = styled.section`
   padding: .5rem 0 0;
   text-align: center;
+
+  ${Button} {
+    &:first-of-type {
+      margin-left: 0;
+    }
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
 `;
 
 export const StyledSteps = styled.div`
