@@ -13,4 +13,16 @@ export const isConnected = (state: GlobalState): boolean => {
   return ddp.connected;
 };
 
+export const showSettings = (state: GlobalState): boolean => {
+  const ddp = getState(state);
+
+  return ddp.showSettings;
+};
+
+export const getUrl = (state: GlobalState): string => {
+  const ddp = getState(state);
+
+  return ddp.url;
+};
+
 export default null;

@@ -15,18 +15,20 @@ import Led from '../../elements/led';
 import Button from '../../elements/button';
 import { toggleSequencerGrid } from '../../store/actions/sequencer';
 import { showGrid } from '../../store/selectors/sequencer';
-import { toggleDdpConnection } from '../../store/actions/ddp';
-import { isConnected } from '../../store/selectors/ddp';
+import { toggleDdpConnection, toggleDdpSettings } from '../../store/actions/ddp';
+import { isConnected, showSettings } from '../../store/selectors/ddp';
 import Icon from '../icons';
 
 type StateProps = {
   grid: boolean,
   connected: boolean,
+  settings: boolean,
 }
 
 type DispatchProps = {
   toggleGrid: Function,
   toggleConnection: Function,
+  toggleSettings: Function,
 }
 
 type Props = StateProps & DispatchProps;
@@ -35,7 +37,9 @@ const Connection = ({
   grid,
   toggleGrid,
   connected,
+  settings,
   toggleConnection,
+  toggleSettings,
 }: Props) => (
   <Container>
     <Title>Connection</Title>
@@ -49,8 +53,9 @@ const Connection = ({
           <Icon icon="connect" />
         </Button>
         <Button
-          active={false}
-          color="white"
+          active={settings}
+          color="yellow"
+          onClick={toggleSettings}
         >
           <Icon icon="edit" />
         </Button>
@@ -89,11 +94,13 @@ const Connection = ({
 const mapStateToProps = (state: *): StateProps => ({
   grid: showGrid(state),
   connected: isConnected(state),
+  settings: showSettings(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<*>): DispatchProps => ({
   toggleGrid: () => dispatch(toggleSequencerGrid()),
   toggleConnection: () => dispatch(toggleDdpConnection()),
+  toggleSettings: () => dispatch(toggleDdpSettings()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Connection);

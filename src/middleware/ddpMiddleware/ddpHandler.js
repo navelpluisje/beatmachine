@@ -7,8 +7,7 @@ import { DDPException } from '../helpers/exceptions';
 class DdpHandler {
   connected: boolean;
   ddpclient: DDPClient;
-  host: string;
-  port: number;
+  url: string;
 
   /**
   * Initialize the handler
@@ -18,26 +17,19 @@ class DdpHandler {
   *
   * @return {void}
   */
-  constructor(host: ?string = undefined, port: ?number = undefined) {
+  constructor(url: ?string = undefined) {
     this.connected = false;
     this.ddpclient = null;
 
-    this.host = host || '';
-    this.port = port || 0;
+    this.url = url || '';
 
     this.createClient();
   }
 
-  setHost(host: string, reconnect: boolean = false) {
-    this.host = host;
-
-    if (reconnect) {
-      this.connect();
-    }
-  }
-
-  setPort(port: number, reconnect: boolean = false) {
-    this.port = port;
+  setUrl(url: string, reconnect: boolean = false) {
+    this.url = url;
+    this.close();
+    this.createClient();
 
     if (reconnect) {
       this.connect();
@@ -46,23 +38,16 @@ class DdpHandler {
 
   createClient() {
     this.ddpclient = null;
-    let options = {
-      host: this.host,
-      port: this.port,
+    const options = {
+      url: this.url,
     };
-
-    if (this.port === 0) {
-      options = {
-        url: this.host,
-      };
-    }
 
     this.ddpclient = new DDPClient(options);
   }
 
   createEvent() {
-    this.host = 'test'; // eslint-disable-line
-
+    this.x = '';
+    console.log('crete event'); // eslint-disable-line
     // const connectedEvent = new CustomEvent('ddp-connected', {
     //   detail: {
     //     connected: this.connected,
@@ -76,7 +61,7 @@ class DdpHandler {
   *
   * @return {void}
   */
-  connect(addedCb?: Function, changedCb?: Function, removedCb?: Function) {
+  async connect(addedCb?: Function, changedCb?: Function, removedCb?: Function) {
     if (this.connected) {
       this.close();
       this.connected = false;
@@ -85,7 +70,7 @@ class DdpHandler {
     const changed = changedCb || function changed(a) { console.log(`id: ${a}`); }; // eslint-disable-line
     const removed = removedCb || function removed(a) { console.log(a); }; // eslint-disable-line
 
-    this.ddpclient.connect((error, wasReconnect) => {
+    const connected = await this.ddpclient.connect((error, wasReconnect) => {
       /**
       * Initialy set connected to false. We're not quite sure if we will be getting connected
       */
@@ -122,9 +107,9 @@ class DdpHandler {
         changed,
         removed,
       );
-    });
 
-    return this.connected;
+      return connected;
+    });
   }
 
   /**
@@ -140,12 +125,12 @@ class DdpHandler {
   reConnect(addedCb?: Function, changedCb?: Function, removedCb?: Function) {
     if (this.connected) {
       this.close();
-      this.connect(
-        addedCb,
-        changedCb,
-        removedCb,
-      );
     }
+    this.connect(
+      addedCb,
+      changedCb,
+      removedCb,
+    );
   }
 
   /**

@@ -2,6 +2,7 @@
 import DdpHandler from './ddpHandler';
 import {
   DDP_TOGGLE_CONNECTED,
+  DDP_RECONNECT,
   CHANNELS_SET_STEP,
   CHANNELS_SET_STEP_DDP,
 } from '../../store/constants';
@@ -38,9 +39,9 @@ const ddpAdded = dispatch => (id, newFields) => {
 };
 
 
-const ddpMiddleware = (host, port) => {
-  const ddpHandler = new DdpHandler(host, port);
-
+const ddpMiddleware = (url) => {
+  const ddpHandler = new DdpHandler(url);
+  console.log(url); // eslint-disable-line
   return (store: *) => (next: Function) => (action: AllActions) => { // eslint-disable-line
     // Check if we are connected an connect if we did not
     switch (action.type) {
@@ -55,9 +56,29 @@ const ddpMiddleware = (host, port) => {
           );
           ddpAction.connected = true; //
         } else {
+          ddpAction.connected = false; //
           ddpHandler.close();
         }
       } catch (e) {
+        throw new DDPException(`Error while connecting: ${e}`);
+      }
+      return next(ddpAction);
+    }
+
+    case DDP_RECONNECT: {
+      const ddpAction = { ...action };
+      ddpAction.connected = false;
+      ddpHandler.setUrl(action.url);
+
+      try {
+        const { dispatch } = store;
+        ddpHandler.reConnect(
+          ddpAdded(dispatch),
+          ddpChanged(dispatch),
+        );
+        ddpAction.connected = true;
+      } catch (e) {
+        ddpAction.connected = false; //
         throw new DDPException(`Error while connecting: ${e}`);
       }
       return next(ddpAction);

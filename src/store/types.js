@@ -55,6 +55,8 @@ export type MasterState = {
 
 export type DdpState = {
   connected: boolean,
+  url: string,
+  showSettings: boolean,
 };
 
 export type GlobalState = {

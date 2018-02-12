@@ -25,6 +25,8 @@ import {
   SOUND_TOGGLE_SOLO,
   MASTER_SET_VOLUME,
   DDP_TOGGLE_CONNECTED,
+  DDP_TOGGLE_SETTINGS,
+  DDP_SET_URL,
 } from '../constants';
 
 export type SequencerSetInitial = {
@@ -173,8 +175,20 @@ export type DdpToggleConnection = {
   connected: boolean,
 };
 
+export type DdpToggleSettings = {
+  type: typeof DDP_TOGGLE_SETTINGS,
+  settings: boolean,
+};
+
+export type DdpSetUrl = {
+  type: typeof DDP_SET_URL,
+  url: string,
+};
+
 export type DdpActions =
-  DdpToggleConnection;
+  DdpToggleConnection |
+  DdpToggleSettings |
+  DdpSetUrl;
 
 export type AllActions =
   SoundsActions |
