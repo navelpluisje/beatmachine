@@ -106,7 +106,7 @@ export default styled.div`
     height: ${props => props.size};
     padding: 3px;
     position: relative;
-    transition: transform .5s ease;
+    transition: transform .15s ease;
     width: ${props => props.size};
 
     &::after {

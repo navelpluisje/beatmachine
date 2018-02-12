@@ -13,6 +13,18 @@ export const isConnected = (state: GlobalState): boolean => {
   return ddp.connected;
 };
 
+export const isSending = (state: GlobalState): boolean => {
+  const ddp = getState(state);
+
+  return ddp.sending;
+};
+
+export const isReceiving = (state: GlobalState): boolean => {
+  const ddp = getState(state);
+
+  return ddp.receiving;
+};
+
 export const showSettings = (state: GlobalState): boolean => {
   const ddp = getState(state);
 

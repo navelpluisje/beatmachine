@@ -34,27 +34,31 @@ export const SOUND_TOGGLE_SETTING: 'beatMachine/Sound/SOUND_TOGGLE_SETTING' =
 export const SOUND_TOGGLE_SOLO: 'beatMachine/Sound/SOUND_TOGGLE_SOLO' =
   'beatMachine/Sound/SOUND_TOGGLE_SOLO';
 
-export const CHANNELS_SET_STEP: 'beatMachine/Sound/CHANNELS_SET_STEP' =
-  'beatMachine/Sound/CHANNELS_SET_STEP';
-export const CHANNELS_SET_STEP_DDP: 'beatMachine/Sound/CHANNELS_SET_STEP_DDP' =
-  'beatMachine/Sound/CHANNELS_SET_STEP_DDP';
-export const CHANNELS_SET_ACTIVE_CHANNEL: 'beatMachine/Sound/CHANNELS_SET_ACTIVE_CHANNEL' =
-  'beatMachine/Sound/CHANNELS_SET_ACTIVE_CHANNEL';
+export const CHANNELS_SET_STEP: 'beatMachine/Channels/CHANNELS_SET_STEP' =
+  'beatMachine/Channels/CHANNELS_SET_STEP';
+export const CHANNELS_SET_STEP_DDP: 'beatMachine/Channels/CHANNELS_SET_STEP_DDP' =
+  'beatMachine/Channels/CHANNELS_SET_STEP_DDP';
+export const CHANNELS_SET_ACTIVE_CHANNEL: 'beatMachine/Channels/CHANNELS_SET_ACTIVE_CHANNEL' =
+  'beatMachine/Channels/CHANNELS_SET_ACTIVE_CHANNEL';
 
-export const MASTER_SET_VOLUME: 'beatMachine/Sound/MASTER_SET_VOLUME' =
-  'beatMachine/Sound/MASTER_SET_VOLUME';
-export const MASTER_SET_DISTORTION: 'beatMachine/Sound/MASTER_SET_DISTORTION' =
-  'beatMachine/Sound/MASTER_SET_DISTORTION';
-export const MASTER_TOGGLE_DISTORTION: 'beatMachine/Sound/MASTER_TOGGLE_DISTORTION' =
-  'beatMachine/Sound/MASTER_TOGGLE_DISTORTION';
+export const MASTER_SET_VOLUME: 'beatMachine/Master/MASTER_SET_VOLUME' =
+  'beatMachine/Master/MASTER_SET_VOLUME';
+export const MASTER_SET_DISTORTION: 'beatMachine/Master/MASTER_SET_DISTORTION' =
+  'beatMachine/Master/MASTER_SET_DISTORTION';
+export const MASTER_TOGGLE_DISTORTION: 'beatMachine/Master/MASTER_TOGGLE_DISTORTION' =
+  'beatMachine/Master/MASTER_TOGGLE_DISTORTION';
 
-export const DDP_TOGGLE_SETTINGS: 'beatMachine/Sound/DDP_TOGGLE_SETTINGS' =
-  'beatMachine/Sound/DDP_TOGGLE_SETTINGS';
-export const DDP_RECONNECT: 'beatMachine/Sound/DDP_RECONNECT' =
-  'beatMachine/Sound/DDP_RECONNECT';
-export const DDP_TOGGLE_CONNECTED: 'beatMachine/Sound/DDP_TOGGLE_CONNECTED' =
-  'beatMachine/Sound/DDP_TOGGLE_CONNECTED';
-export const DDP_SET_URL: 'beatMachine/Sound/DDP_SET_URL' =
-  'beatMachine/Sound/DDP_SET_URL';
+export const DDP_TOGGLE_SETTINGS: 'beatMachine/Ddp/DDP_TOGGLE_SETTINGS' =
+  'beatMachine/Ddp/DDP_TOGGLE_SETTINGS';
+export const DDP_RECONNECT: 'beatMachine/Ddp/DDP_RECONNECT' =
+  'beatMachine/Ddp/DDP_RECONNECT';
+export const DDP_TOGGLE_CONNECTED: 'beatMachine/Ddp/DDP_TOGGLE_CONNECTED' =
+  'beatMachine/Ddp/DDP_TOGGLE_CONNECTED';
+export const DDP_SET_URL: 'beatMachine/Ddp/DDP_SET_URL' =
+  'beatMachine/Ddp/DDP_SET_URL';
+export const DDP_SET_SENDING: 'beatMachine/Ddp/DDP_SET_SENDING' =
+  'beatMachine/Ddp/DDP_SET_SENDING';
+export const DDP_SET_RECEIVING: 'beatMachine/Ddp/DDP_SET_RECEIVING' =
+  'beatMachine/Ddp/DDP_SET_RECEIVING';
 
 export default null;

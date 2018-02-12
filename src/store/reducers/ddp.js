@@ -5,6 +5,8 @@ import {
   DDP_RECONNECT,
   DDP_TOGGLE_SETTINGS,
   DDP_SET_URL,
+  DDP_SET_SENDING,
+  DDP_SET_RECEIVING,
 } from '../constants';
 import type { DdpActions } from '../actions/types';
 import type { DdpState } from '../types';
@@ -13,6 +15,8 @@ const defaultSettings: DdpState = {
   connected: false,
   url: localStorage.getItem('ddp-url') || '127.0.0.1:3000',
   showSettings: false,
+  sending: false,
+  receiving: false,
 };
 
 export default (state: DdpState = defaultSettings, action: DdpActions): DdpState => {
@@ -40,6 +44,18 @@ export default (state: DdpState = defaultSettings, action: DdpActions): DdpState
     return {
       ...state,
       url: action.url,
+    };
+
+  case DDP_SET_SENDING:
+    return {
+      ...state,
+      sending: action.send,
+    };
+
+  case DDP_SET_RECEIVING:
+    return {
+      ...state,
+      receiving: action.receive,
     };
 
   default:

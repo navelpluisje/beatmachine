@@ -9,16 +9,22 @@ import type {
   ChannelsSetActiveChannel,
 } from './types';
 import { getActiveChannel } from '../selectors/channels';
+import { isConnected } from '../selectors/ddp';
 
-export const setChannelStep =
-  (channel: string, step: number, value?: ?boolean = null): ChannelsSetStep => ({
-    type: CHANNELS_SET_STEP,
-    meta: {
-      channel,
-      step,
-      value,
-    },
-  });
+export const setChannelStep = (
+  channel: string,
+  step: number,
+  value?: ?boolean = null,
+  connected?: ?boolean = null,
+): ChannelsSetStep => ({
+  type: CHANNELS_SET_STEP,
+  meta: {
+    channel,
+    step,
+    value,
+    connected,
+  },
+});
 
 export const setChannelActive = (channel: string): ChannelsSetActiveChannel => ({
   type: CHANNELS_SET_ACTIVE_CHANNEL,
@@ -27,9 +33,11 @@ export const setChannelActive = (channel: string): ChannelsSetActiveChannel => (
 
 export const setStep = (step: number, activeChannel?: string, value?: boolean) =>
   (dispatch: Function, getState: Function) => {
-    const channel = activeChannel || getActiveChannel(getState());
+    const state = getState();
+    const channel = activeChannel || getActiveChannel(state);
+    const connected = isConnected(state);
 
-    dispatch(setChannelStep(channel, step, value));
+    dispatch(setChannelStep(channel, step, value, connected));
   };
 
 export default null;
