@@ -23,7 +23,7 @@ export default (state: DrumkitState = defaultDrumkit, action: DrumkitActions): D
     return defaultDrumkit;
 
   case DRUMKIT_SET_ACTIVE:
-    localStorage.setItem('drumkit', action.meta.index);
+    localStorage.setItem('drumkit', action.meta.index.toString());
     return {
       ...state,
       active: action.meta.index,

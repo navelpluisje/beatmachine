@@ -11,8 +11,6 @@ import { DDPException } from '../helpers/exceptions';
 import type { AllActions } from '../../store/actions/types'; // eslint-disable-line flowtype/no-types-missing-file-annotation
 
 const ddpChanged = dispatch => (id, oldFields, clearedFields, newFields) => {
-  console.log(id, clearedFields, newFields); // eslint-disable-line
-
   Object.entries(newFields).forEach(([key, value]) => {
     if (key !== '_id') {
       dispatch(setReceiving(true));
@@ -27,7 +25,6 @@ const ddpChanged = dispatch => (id, oldFields, clearedFields, newFields) => {
 };
 
 const ddpAdded = dispatch => (id, newFields) => {
-  console.log(newFields); // eslint-disable-line
   Object.entries(newFields).forEach(([key, value]) => {
     if (key !== '_id') {
       dispatch(setReceiving(true));
@@ -44,7 +41,6 @@ const ddpAdded = dispatch => (id, newFields) => {
 
 const ddpMiddleware = (url) => {
   const ddpHandler = new DdpHandler(url);
-  console.log(url); // eslint-disable-line
   return (store: *) => (next: Function) => (action: AllActions) => { // eslint-disable-line
     // Check if we are connected an connect if we did not
     switch (action.type) {

@@ -9,7 +9,7 @@ import {
   DDP_RECONNECT,
 } from '../constants';
 import { getUrl } from '../selectors/ddp';
-import type { DdpToggleConnection, DdpSetUrl } from './types';
+import type { DdpToggleConnection, DdpSetUrl, DdpToggleSettings } from './types';
 
 export const toggleDdpConnection = (): DdpToggleConnection => ({
   type: DDP_TOGGLE_CONNECTED,
@@ -52,7 +52,7 @@ export const setReceiving = (receive: boolean) =>
     }), 200);
   };
 
-export const reConnect = (): DdpSetUrl =>
+export const reConnect = (): Function =>
   (dispatch: Dispatch<*>, getState: Function) => {
     const url = getUrl(getState());
     dispatch({

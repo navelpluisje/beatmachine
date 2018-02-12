@@ -57,6 +57,8 @@ export type DdpState = {
   connected: boolean,
   url: string,
   showSettings: boolean,
+  sending: boolean,
+  receiving: boolean,
 };
 
 export type GlobalState = {
