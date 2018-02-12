@@ -16,12 +16,14 @@ import Button from '../../elements/button';
 import { toggleSequencerGrid } from '../../store/actions/sequencer';
 import { showGrid } from '../../store/selectors/sequencer';
 import { toggleDdpConnection, toggleDdpSettings } from '../../store/actions/ddp';
-import { isConnected, showSettings } from '../../store/selectors/ddp';
+import { isConnected, showSettings, isSending, isReceiving } from '../../store/selectors/ddp';
 import Icon from '../icons';
 
 type StateProps = {
   grid: boolean,
   connected: boolean,
+  sending: boolean,
+  receiving: boolean,
   settings: boolean,
 }
 
@@ -37,6 +39,8 @@ const Connection = ({
   grid,
   toggleGrid,
   connected,
+  sending,
+  receiving,
   settings,
   toggleConnection,
   toggleSettings,
@@ -70,12 +74,12 @@ const Connection = ({
         <Led
           label="Send"
           color="blue"
-          active={false}
+          active={sending}
         />
         <Led
           label="Receive"
           color="red"
-          active={false}
+          active={receiving}
         />
       </Status>
     </Content>
@@ -94,6 +98,8 @@ const Connection = ({
 const mapStateToProps = (state: *): StateProps => ({
   grid: showGrid(state),
   connected: isConnected(state),
+  sending: isSending(state),
+  receiving: isReceiving(state),
   settings: showSettings(state),
 });
 

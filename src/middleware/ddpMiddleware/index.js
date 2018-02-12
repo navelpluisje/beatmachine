@@ -6,6 +6,7 @@ import {
   CHANNELS_SET_STEP,
   CHANNELS_SET_STEP_DDP,
 } from '../../store/constants';
+import { setSending, setReceiving } from '../../store/actions/ddp';
 import { DDPException } from '../helpers/exceptions';
 import type { AllActions } from '../../store/actions/types'; // eslint-disable-line flowtype/no-types-missing-file-annotation
 
@@ -14,6 +15,7 @@ const ddpChanged = dispatch => (id, oldFields, clearedFields, newFields) => {
 
   Object.entries(newFields).forEach(([key, value]) => {
     if (key !== '_id') {
+      dispatch(setReceiving(true));
       dispatch({
         type: CHANNELS_SET_STEP_DDP,
         meta: {
@@ -28,6 +30,7 @@ const ddpAdded = dispatch => (id, newFields) => {
   console.log(newFields); // eslint-disable-line
   Object.entries(newFields).forEach(([key, value]) => {
     if (key !== '_id') {
+      dispatch(setReceiving(true));
       dispatch({
         type: CHANNELS_SET_STEP_DDP,
         meta: {
@@ -90,6 +93,10 @@ const ddpMiddleware = (url) => {
         action.meta.step,
         action.meta.value,
       ]);
+
+      if (action.meta.connected === true) {
+        store.dispatch(setSending(true));
+      }
       break;
 
     default:

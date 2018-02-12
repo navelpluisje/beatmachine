@@ -27,6 +27,8 @@ import {
   DDP_TOGGLE_CONNECTED,
   DDP_TOGGLE_SETTINGS,
   DDP_SET_URL,
+  DDP_SET_SENDING,
+  DDP_SET_RECEIVING,
 } from '../constants';
 
 export type SequencerSetInitial = {
@@ -86,6 +88,7 @@ export type ChannelsSetStep = {
     channel: string,
     step: number,
     value: ?boolean,
+    connected: ?boolean,
   }
 }
 
@@ -185,10 +188,21 @@ export type DdpSetUrl = {
   url: string,
 };
 
+export type DdpSending = {
+  type: typeof DDP_SET_SENDING,
+  send: boolean,
+};
+
+export type DdpReceiving = {
+  type: typeof DDP_SET_RECEIVING,
+  receive: boolean,
+};
+
 export type DdpActions =
   DdpToggleConnection |
   DdpToggleSettings |
-  DdpSetUrl;
+  DdpSetUrl |
+  DdpSending;
 
 export type AllActions =
   SoundsActions |
