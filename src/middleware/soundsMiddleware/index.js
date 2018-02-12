@@ -28,6 +28,7 @@ const soundsMiddleware = (soundsData: SoundsType) => {
       break;
 
     case DRUMKIT_SET_ACTIVE:
+      console.log(action.meta.drumkit);
       sounds.setDrumkit(action.meta.drumkit);
       break;
 

@@ -10,8 +10,10 @@ const getState = (state: GlobalState): DrumkitState => state.drumkit;
 
 export const getDrumkit = (state: GlobalState, id?: number): Drumkit => {
   const drumkit = getState(state);
-
-  return drumkit.drumkits[id || drumkit.active];
+  if (typeof id !== 'number') {
+    return drumkit.drumkits[drumkit.active];
+  }
+  return drumkit.drumkits[id];
 };
 
 export const getNextDrumkitIndex = (state: GlobalState): number => {
