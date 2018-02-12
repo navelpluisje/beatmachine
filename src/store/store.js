@@ -27,7 +27,7 @@ const makeStore = (initialState: Object = {}): Store<GlobalState, AllActions> =>
         ...middleware,
         soundsMiddleware(SOUNDS),
         sequencerMiddleware(),
-        ddpMiddleware('wss://beatmachine.herokuapp.com', 0),
+        ddpMiddleware('ws://localhost:3000', 0),
       ),
       ...composers,
     ),

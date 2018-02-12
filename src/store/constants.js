@@ -48,7 +48,13 @@ export const MASTER_SET_DISTORTION: 'beatMachine/Sound/MASTER_SET_DISTORTION' =
 export const MASTER_TOGGLE_DISTORTION: 'beatMachine/Sound/MASTER_TOGGLE_DISTORTION' =
   'beatMachine/Sound/MASTER_TOGGLE_DISTORTION';
 
+export const DDP_TOGGLE_SETTINGS: 'beatMachine/Sound/DDP_TOGGLE_SETTINGS' =
+  'beatMachine/Sound/DDP_TOGGLE_SETTINGS';
+export const DDP_RECONNECT: 'beatMachine/Sound/DDP_RECONNECT' =
+  'beatMachine/Sound/DDP_RECONNECT';
 export const DDP_TOGGLE_CONNECTED: 'beatMachine/Sound/DDP_TOGGLE_CONNECTED' =
   'beatMachine/Sound/DDP_TOGGLE_CONNECTED';
+export const DDP_SET_URL: 'beatMachine/Sound/DDP_SET_URL' =
+  'beatMachine/Sound/DDP_SET_URL';
 
 export default null;
