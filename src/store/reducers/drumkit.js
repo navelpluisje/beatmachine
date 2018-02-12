@@ -14,7 +14,7 @@ const defaultDrumkit: DrumkitState = {
     'HR16',
     'LINNDRUM',
   ],
-  active: 0,
+  active: parseInt(localStorage.getItem('drumkit'), 10) || 0,
 };
 
 export default (state: DrumkitState = defaultDrumkit, action: DrumkitActions): DrumkitState => {
@@ -23,6 +23,7 @@ export default (state: DrumkitState = defaultDrumkit, action: DrumkitActions): D
     return defaultDrumkit;
 
   case DRUMKIT_SET_ACTIVE:
+    localStorage.setItem('drumkit', action.meta.index);
     return {
       ...state,
       active: action.meta.index,
