@@ -15,7 +15,13 @@ type Props = {
 }
 
 class StatusLed extends Component<Props, *> {
-  shouldComponentUpdate(nextProps) {
+  static defaultProps = {
+    color: 'white',
+    onClick: null,
+    label: '',
+  };
+
+  shouldComponentUpdate(nextProps: Props) {
     return nextProps.active !== this.props.active ||
       nextProps.color !== this.props.color;
   }
@@ -40,11 +46,5 @@ class StatusLed extends Component<Props, *> {
     );
   }
 }
-
-StatusLed.defaultProps = {
-  color: 'white',
-  onClick: null,
-  label: '',
-};
 
 export default StatusLed;

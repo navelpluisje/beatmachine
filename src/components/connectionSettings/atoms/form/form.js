@@ -15,7 +15,7 @@ type StateProps = {
 
 type DispatchProps = {
   setUrl: Function,
-  reconnect: Funtion,
+  reconnect: Function,
 };
 
 type Props = StateProps & DispatchProps;
@@ -40,7 +40,12 @@ const mapStateToProps = (state: *): StateProps => ({
 });
 
 const mapDispatchProps = (dispatch: Dispatch<*>): DispatchProps => ({
-  setUrl: (evt: Event) => dispatch(setDDPUrl(evt.target.value)),
+  setUrl: (evt: Event) => {
+    const { target } = evt;
+    if (target instanceof HTMLInputElement) {
+      dispatch(setDDPUrl(target.value));
+    }
+  },
   reconnect: () => dispatch(reConnect()),
 });
 

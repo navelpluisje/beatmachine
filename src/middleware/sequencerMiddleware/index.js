@@ -15,13 +15,19 @@ const sequencerMiddleware = () => {
   }
 
   const worker = new Worker('js/worker.js');
-  return (store: *) => (next: Function) => (action: AllActions) => { // eslint-disable-line
+
+  // eslint-disable-next-line no-unused-vars
+  const next = (dispatch: Dispatch<*>) => {
+    dispatch(setNextStep());
+  };
+
+  return (store: *) => (next: Function) => (action: AllActions & *) => { // eslint-disable-line
     // Ignore actions that haven't specified a sound.
     if (worker.onmessage === null) {
       const { dispatch } = store;
       worker.onmessage = (evt) => {
         if (evt.data === 'nextStep') {
-          dispatch(setNextStep());
+          next(dispatch);
         }
       };
     }
