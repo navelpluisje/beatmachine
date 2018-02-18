@@ -4,7 +4,7 @@ import React from 'react';
 import {
   Transport,
   Settings,
-} from './atoms';
+} from './components';
 
 const SequencerControl = () => (
   <div>

@@ -3,7 +3,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Button from '../../elements/button';
-import { Container } from './atoms';
+import { Container } from './components';
 import { getCurrentStep, getEditGroup } from '../../store/selectors/sequencer';
 import { setStep } from '../../store/actions/channels';
 import { isSelectedStep } from '../../store/selectors/channels';

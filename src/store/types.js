@@ -18,10 +18,20 @@ export type SequencerState = {
 };
 
 export type Drumkit = 'TR808' | 'TR909' | 'HR16' | 'LINNDRUM';
+export type CustomDrumkit = {
+  [sound: string]: {
+    sound: string,
+    drumkit: string,
+    blob: ?ArrayBuffer,
+  }
+}
 
 export type DrumkitState = {
   drumkits: Array<Drumkit>,
   active: number,
+  customDrumkit: CustomDrumkit,
+  showSettings: boolean,
+  databaseConnected: boolean,
 };
 
 export type Sound = {

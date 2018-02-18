@@ -16,6 +16,7 @@ const icons = {
   loop: '\\ea2d',
   arrowLeft: '\\e900',
   arrowRight: '\\e901',
+  drumkit: '\\e928',
 };
 
 export default styled.i`

@@ -8,7 +8,7 @@ import {
   Content,
   Distortion,
   Logo,
-} from './atoms';
+} from './components';
 import Encoder from '../../elements/encoder';
 import { setVolume as setMasterVolume } from '../../store/actions/master';
 import { getVolume } from '../../store/selectors/master';

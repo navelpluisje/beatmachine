@@ -5,20 +5,25 @@ import { connect } from 'react-redux';
 import Channels from '../channels';
 import TheMatrix from '../theMatrix';
 import ConnectionSettings from '../connectionSettings';
+import CustomDrumkit from '../customDrumkit';
 import { showGrid } from '../../store/selectors/sequencer';
 import { showSettings } from '../../store/selectors/ddp';
+import { showDrumkitSettings } from '../../store/selectors/drumkit';
 
 type StateProps = {
   grid: boolean,
   connection: boolean,
+  customDrumkit: boolean,
 };
 
 type Props = StateProps;
 
 class BottomBar extends Component<Props, *> {
   getComponent() {
-    const { grid, connection } = this.props;
-
+    const { grid, connection, customDrumkit } = this.props;
+    if (customDrumkit) {
+      return (<CustomDrumkit />);
+    }
     if (connection) {
       return (<ConnectionSettings />);
     }
@@ -37,6 +42,7 @@ class BottomBar extends Component<Props, *> {
 const mapStateToProps = (state: *): StateProps => ({
   grid: showGrid(state),
   connection: showSettings(state),
+  customDrumkit: showDrumkitSettings(state),
 });
 
 export default connect(mapStateToProps)(BottomBar);

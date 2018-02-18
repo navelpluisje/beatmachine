@@ -23,7 +23,7 @@ export default styled.section`
 
   ${Button} {
     margin: 0;
-    wicth: 100%;
+    width: 100%;
   }
 `;
 

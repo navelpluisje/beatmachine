@@ -86,22 +86,14 @@ export const setNextStep = () =>
     }, []);
 
 
-    return {
+    dispatch({
       type: SEQUENCER_SET_CURRENT_STEP,
       meta: {
         step,
         sounds,
         master,
       },
-    };
-    // dispatch({
-    //   type: SEQUENCER_SET_CURRENT_STEP,
-    //   meta: {
-    //     step,
-    //     sounds,
-    //     master,
-    //   },
-    // });
+    });
   };
 
 export const setNextStepCount = () =>
