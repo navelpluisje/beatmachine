@@ -6,6 +6,7 @@ import {
   CHANNELS_SET_STEP,
   CHANNELS_SET_STEP_DDP,
 } from '../../store/constants';
+import { getUrl } from '../../store/selectors/ddp';
 import { setSending, setReceiving } from '../../store/actions/ddp';
 import { DDPException } from '../helpers/exceptions';
 import type { AllActions } from '../../store/actions/types'; // eslint-disable-line flowtype/no-types-missing-file-annotation
@@ -41,6 +42,7 @@ const ddpAdded = dispatch => (id, newFields) => {
 
 const ddpMiddleware = (url) => {
   const ddpHandler = new DdpHandler(url);
+
   return (store: *) => (next: Function) => (action: AllActions) => { // eslint-disable-line
     // Check if we are connected an connect if we did not
     switch (action.type) {
@@ -49,6 +51,7 @@ const ddpMiddleware = (url) => {
       try {
         const { dispatch } = store;
         if (!ddpHandler.connected) {
+          ddpHandler.setUrl(getUrl(store.getState()));
           ddpHandler.connect(
             ddpAdded(dispatch),
             ddpChanged(dispatch),

@@ -5,6 +5,7 @@ import type {
   SequencerRunning,
   SequencerStepCount,
   MasterState,
+  CustomDrumkit,
 } from '../types';
 import {
   INITIAL_SETTINGS,
@@ -16,6 +17,11 @@ import {
   SEQUENCER_SET_EDIT_GROUP,
   SEQUENCER_TOGGLE_GRID,
   DRUMKIT_SET_ACTIVE,
+  DRUMKIT_LOAD_CUSTOM,
+  DRUMKIT_ADD_CUSTOM,
+  DRUMKIT_SET_CUSTOM_VALUE,
+  DRUMKIT_TOGGLE_SETTINGS,
+  DRUMKIT_DATABASE_CONNECTED,
   CHANNELS_SET_STEP,
   CHANNELS_SET_STEP_DDP,
   CHANNELS_SET_ACTIVE_CHANNEL,
@@ -112,7 +118,7 @@ export type ChannelsActions =
   ChannelsSetActiveChannel |
   ChannelsSetStepDdp;
 
-export type DrumkitSetActive= {
+export type DrumkitSetActive = {
   type: typeof DRUMKIT_SET_ACTIVE,
   meta: {
     index: number,
@@ -120,8 +126,43 @@ export type DrumkitSetActive= {
   },
 }
 
+export type DrumkitSetCustomValue = {
+  type: typeof DRUMKIT_SET_CUSTOM_VALUE,
+  meta: {
+    sound: string,
+    field: string,
+    value: string | number | ArrayBuffer | null,
+  },
+}
+
+export type DrumkitLoadCustom = {
+  type: typeof DRUMKIT_LOAD_CUSTOM,
+  meta: {
+    customDrumkit: CustomDrumkit,
+  },
+}
+
+export type DrumkitAddCustom = {
+  type: typeof DRUMKIT_ADD_CUSTOM,
+  meta: {
+    sound: string,
+    drumkit: $Values<CustomDrumkit>,
+  },
+}
+
+export type DrumkitToggleSettings = {
+  type: typeof DRUMKIT_TOGGLE_SETTINGS,
+}
+
+export type DrumkitDatabaseConnected = {
+  type: typeof DRUMKIT_DATABASE_CONNECTED,
+  value: boolean,
+}
+
 export type DrumkitActions =
-  SequencerSetInitial |
+  DrumkitLoadCustom |
+  DrumkitAddCustom |
+  DrumkitSetCustomValue |
   DrumkitSetActive;
 
 

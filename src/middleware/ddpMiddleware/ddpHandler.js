@@ -28,7 +28,9 @@ class DdpHandler {
 
   setUrl(url: string, reconnect: boolean = false) {
     this.url = url;
-    this.close();
+    if (this.connected) {
+      this.close();
+    }
     this.createClient();
 
     if (reconnect) {

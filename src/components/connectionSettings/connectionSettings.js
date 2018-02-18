@@ -1,21 +1,35 @@
 // @flow
 
 import React from 'react';
-import SettingsContainer, {
-  SettingsForm,
-  Title,
-} from './connectionSettings.styled';
 import {
   Form,
+} from './components';
+import {
+  Container,
+  BottomForm,
+  BottomTitle,
   Explanation,
-} from './atoms';
+} from '../bottomBar/components';
 
 export default () => (
-  <SettingsContainer>
-    <SettingsForm>
-      <Title>Connection Settings</Title>
+  <Container>
+    <BottomForm>
+      <BottomTitle>Connection Settings</BottomTitle>
       <Form />
-    </SettingsForm>
-    <Explanation />
-  </SettingsContainer>
+    </BottomForm>
+    <Explanation
+      title="Explanation"
+    >
+      <p>
+        Fill in the full url to connect to. This is with protocol and port number included.
+        When using Heroku you do not need to add a port.
+      </p>
+      <p>
+        Click the connection button to (re-)connect.
+      </p>
+      <p>
+        The server for use with the BeatMachine can be found <a href="https://bitbucket.org/Navelpluisje/beatserver">here</a>.
+      </p>
+    </Explanation>
+  </Container>
 );
