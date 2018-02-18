@@ -35,6 +35,14 @@ export default class Sound {
     this.getFile();
   }
 
+  setCustomDrumkit(drumkit, customkit) {
+    this.drumkit = drumkit;
+    this.ac.decodeAudioData(customkit.blob.slice(0), (buffer) => {
+      this.buffer = null;
+      this.buffer = buffer;
+    });
+  }
+
   getFile() {
     fetch(`sounds/${this.drumkit}/${this.sound}.wav`)
       .then(response => response.arrayBuffer())

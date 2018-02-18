@@ -9,6 +9,7 @@ import {
 import { SoundException } from '../helpers';
 import type { Sounds as SoundsType } from './types';
 import type { AllActions } from '../../store/actions/types';
+import { getCustomDrumkit } from '../../store/selectors/drumkit';
 
 const soundsMiddleware = (soundsData: SoundsType) => {
   if (!Array.isArray(soundsData)) {
@@ -28,7 +29,11 @@ const soundsMiddleware = (soundsData: SoundsType) => {
       break;
 
     case DRUMKIT_SET_ACTIVE:
-      sounds.setDrumkit(action.meta.drumkit);
+      if (action.meta.drumkit === 'Custom') {
+        sounds.setCustomDrumkit(action.meta.drumkit, getCustomDrumkit(store.getState()));
+      } else {
+        sounds.setDrumkit(action.meta.drumkit);
+      }
       break;
 
     case SEQUENCER_SET_CURRENT_STEP:

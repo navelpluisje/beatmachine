@@ -3,7 +3,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '../../../elements/button';
-import { showDrumkitSettings, hasDatabaseConnection } from '../../../store/selectors/drumkit';
+import {
+  showDrumkitSettings,
+  hasDatabaseConnection,
+  hasCustomDrumkit,
+} from '../../../store/selectors/drumkit';
 import {
   loadCustomDrumkit,
   toggleDrumkitSettings,
@@ -14,14 +18,15 @@ import type { GlobalState } from '../../../store/types';
 
 
 type StateProps = {
-  drumkit: boolean,
   connected: boolean,
+  drumkit: boolean,
+  hasDrumkit: boolean,
 }
 
 type DispatchProps = {
-  toggleCustomDrumkit: Function,
   fetchDrumkit: Function,
   setConnection: Function,
+  toggleCustomDrumkit: Function,
 }
 
 type Props = StateProps & DispatchProps;
@@ -38,15 +43,27 @@ class CustomDrumkit extends Component<Props, *> {
     }
   }
 
+  getButtonColor() {
+    const { hasDrumkit, connected } = this.props;
+    if (!connected) {
+      return 'red';
+    }
+    return hasDrumkit ? 'green' : 'yellow';
+  }
+
+  getButtonActive() {
+    const { drumkit, hasDrumkit, connected } = this.props;
+    return drumkit || hasDrumkit || !connected;
+  }
+
   render() {
     const {
-      drumkit,
       toggleCustomDrumkit,
     } = this.props;
     return (
       <Button
-        active={drumkit}
-        color="yellow"
+        active={this.getButtonActive()}
+        color={this.getButtonColor()}
         onClick={toggleCustomDrumkit}
       >
         <Icon icon="drumkit" />
@@ -56,8 +73,9 @@ class CustomDrumkit extends Component<Props, *> {
 }
 
 const mapStateToProps = (state: GlobalState): StateProps => ({
-  drumkit: showDrumkitSettings(state),
   connected: hasDatabaseConnection(state),
+  drumkit: showDrumkitSettings(state),
+  hasDrumkit: hasCustomDrumkit(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<*>): DispatchProps => ({

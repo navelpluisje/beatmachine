@@ -33,6 +33,10 @@ const CustomDrumkit = () => (
         You can use the play button to check the sound. and shange the name of the file.
         The last one is just cosmetic and will not (yet) be used.
       </p>
+      <p>
+        When all sounds are set, the drumkit button will turn green
+        and you can use your own drumkit.
+      </p>
     </Explanation>
   </Container>
 );

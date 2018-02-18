@@ -69,6 +69,7 @@ export const loadCustomDrumkit = () => (dispatch: Function) => {
   const addCustomDrumkit = (event: Event, sound: string) => {
     let drumkit = {
       sound,
+      nmae: '',
       drumkit: 'customDrumkit',
       blob: null,
     };
@@ -85,35 +86,41 @@ export const loadCustomDrumkit = () => (dispatch: Function) => {
     });
   };
 
-  setTimeout(() => {
-    SOUNDS.forEach((sound) => {
-      getSound(sound, 'customDrumkit', event => addCustomDrumkit(event, sound));
-    });
-  }, 100);
+  SOUNDS.forEach((sound) => {
+    getSound(sound, 'customDrumkit', event => addCustomDrumkit(event, sound));
+  });
 };
 
-export const saveCustomDrumkit = (name: string, blob: ArrayBuffer) => (dispatch: Dispatch<*>) => {
-  const addCustomDrumkit = (event: Event, sound: string) => {
-    const { readyState, error } = event.target;
-    if (readyState === 'done' && error === null) {
+export const saveCustomDrumkit =
+  (sound: string, name: string, blob: ArrayBuffer) => async (dispatch: Dispatch<*>) => {
+    const drumkit = {
+      sound,
+      name,
+      drumkit: 'customDrumkit',
+      blob,
+    };
+
+    let newSound: Event;
+    try {
+      newSound = await addSound(drumkit);
+    } catch (e) {
+      console.error(e);
+      return null;
+    }
+
+    // const addCustomDrumkit = (event: Event, kit: Object) => {
+    const { type, returnValue } = newSound;
+    if (type === 'success' && returnValue) {
       dispatch({
         type: DRUMKIT_ADD_CUSTOM,
         meta: {
           sound,
-          drumkit: {
-            sound,
-            blob,
-            drumkit: 'customDrumkit',
-          },
+          drumkit,
         },
       });
+    // }
     }
   };
-
-  setTimeout(() => {
-    addSound(name, 'customDrumkit', blob, event => addCustomDrumkit(event, name));
-  }, 500);
-};
 
 export const setDatabaseConnection = () => async (dispatch: Dispatch<*>) => {
   let connected;
