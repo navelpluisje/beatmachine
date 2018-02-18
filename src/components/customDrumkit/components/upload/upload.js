@@ -35,7 +35,7 @@ class SoundUpload extends Component<Props, *> {
     const reader = new FileReader();
 
     reader.onloadend = () => {
-      this.props.setCustomValue(reader.result);
+      this.props.setCustomValue(file.name, reader.result);
     };
 
     if (file) {
@@ -66,8 +66,9 @@ class SoundUpload extends Component<Props, *> {
             </UploadLabel>
             <TextInput
               type="text"
-              value={customSound.sound}
+              value={customSound.name}
               onChange={this.setSoundName}
+              readOnly
             />
             <FileInputButton
               color={customSound.blob !== null ? 'green' : 'white'}
@@ -101,8 +102,8 @@ const mapStateToProps = (state: GlobalState, ownProps: OwnProps): stateProps => 
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<*>, ownProps: OwnProps) => ({
-  setCustomValue: (value: any) =>
-    dispatch(saveCustomDrumkit(ownProps.sound, value)),
+  setCustomValue: (name: string, blob: ArrayBuffer) =>
+    dispatch(saveCustomDrumkit(ownProps.sound, name, blob)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SoundUpload);

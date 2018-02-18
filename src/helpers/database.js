@@ -32,33 +32,23 @@ export const initializeDatabase = (): Promise<*> => (
   })
 );
 
-export const addSound = (
-  sound: string,
-  drumkit: string,
-  blob: ArrayBuffer,
-  callback: Function,
-): void => {
-  if (!window.beatMachine || !window.beatMachine.hasDb) {
-    throw Error('No database for BeatMachine');
-  }
+export const addSound = (drumkit: Object): Promise<*> => (
+  new Promise((resolve, reject) => {
+    if (!window.beatMachine || !window.beatMachine.hasDb) {
+      reject(Error('No database for BeatMachine'));
+    }
 
-  const { db } = window.beatMachine;
-  const objectStore: IDBObjectStore = db
-    .transaction(['drumkit'], 'readwrite')
-    .objectStore('drumkit');
+    const { db } = window.beatMachine;
+    const objectStore: IDBObjectStore = db
+      .transaction(['drumkit'], 'readwrite')
+      .objectStore('drumkit');
 
-  const request = objectStore.add({
-    sound,
-    drumkit,
-    blob,
-  });
+    const request = objectStore.add(drumkit);
 
-  request.onsuccess = callback;
-  request.onerror = () => console.error(
-    `${request.error.name} while adding ${sound} from ${drumkit}.`,
-    request.error.message,
-  );
-};
+    request.onsuccess = resolve;
+    request.onerror = () => reject(Error(`${request.error.name} while adding ${drumkit.sound} from ${drumkit.drumkit}: ${request.error.message}`));
+  })
+);
 
 export const getSound = (
   sound: string,
