@@ -65,7 +65,7 @@ export const getSound = (
 
   const { db } = window.beatMachine;
   const objectStore: IDBObjectStore = db
-    .transaction(['drumkit'])
+    .transaction(['drumkit'], 'readonly')
     .objectStore('drumkit')
     .index('soundIndex');
 

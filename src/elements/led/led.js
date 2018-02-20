@@ -2,9 +2,7 @@
 
 import React from 'react';
 import StyledStatusLed, { Label, Led } from './led.styled';
-import type {
-  ButtonColor,
-} from '../button/types';
+import type { ButtonColor } from '../button/types';
 
 
 type Props = {

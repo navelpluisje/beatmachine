@@ -2,8 +2,6 @@
 
 import MatrixRow from './matrixRow';
 
-export {
-  MatrixRow,
-};
+export { MatrixRow };
 
 export default null;

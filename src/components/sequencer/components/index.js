@@ -2,8 +2,6 @@
 
 import Container from './container.styled';
 
-export {
-  Container,
-};
+export { Container };
 
 export default null;
