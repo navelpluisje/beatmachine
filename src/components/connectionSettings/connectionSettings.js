@@ -1,9 +1,7 @@
 // @flow
 
 import React from 'react';
-import {
-  Form,
-} from './components';
+import { Form } from './components';
 import {
   Container,
   BottomForm,

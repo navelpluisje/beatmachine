@@ -3,9 +3,7 @@
 import React, { Component } from 'react';
 import type { Node } from 'react';
 import MatrixButton from './matrixButton.styled';
-import type {
-  ButtonColor,
-} from '../../../../elements/button/types';
+import type { ButtonColor } from '../../../../elements/button/types';
 
 
 type Props = {

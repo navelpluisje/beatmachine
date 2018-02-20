@@ -6,12 +6,8 @@ import {
   SOUND_TOGGLE_SETTING,
   SOUND_TOGGLE_SOLO,
 } from '../constants';
-import {
-  getSoundSettings,
-} from '../selectors/sounds';
-import {
-  getMaster,
-} from '../selectors/master';
+import { getSoundSettings } from '../selectors/sounds';
+import { getMaster } from '../selectors/master';
 
 const playSound = (sound, settings, master) => ({
   type: SOUND_PLAY_ONE,
