@@ -6,9 +6,10 @@ import Upload from '../upload';
 
 export default () => (
   <Fragment>
-    {SOUNDS && SOUNDS.map(sound => (
+    {SOUNDS && SOUNDS.map((sound, index) => (
       <Upload
         key={sound}
+        id={index + 1}
         sound={sound}
       />
     ))}

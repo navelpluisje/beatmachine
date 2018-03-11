@@ -92,13 +92,17 @@ export const loadCustomDrumkit = () => (dispatch: Function) => {
 };
 
 export const saveCustomDrumkit =
-  (sound: string, name: string, blob: ArrayBuffer) => async (dispatch: Dispatch<*>) => {
+  (sound: string, id: number, name: string, blob: ArrayBuffer) => async (dispatch: Dispatch<*>) => {
     const drumkit = {
       sound,
       name,
       drumkit: 'customDrumkit',
       blob,
     };
+
+    if (id !== null) {
+      drumkit.id = id;
+    }
 
     let newSound: Event;
     try {
