@@ -24,6 +24,16 @@ export const SEQUENCER_TOGGLE_GRID: 'beatMachine/Sequencer/SEQUENCER_TOGGLE_GRID
 
 export const DRUMKIT_SET_ACTIVE: 'beatMachine/Drumkit/DRUMKIT_SET_ACTIVE' =
   'beatMachine/Drumkit/DRUMKIT_SET_ACTIVE';
+export const DRUMKIT_LOAD_CUSTOM: 'beatMachine/Drumkit/DRUMKIT_LOAD_CUSTOM' =
+  'beatMachine/Drumkit/DRUMKIT_LOAD_CUSTOM';
+export const DRUMKIT_ADD_CUSTOM: 'beatMachine/Drumkit/DRUMKIT_ADD_CUSTOM' =
+  'beatMachine/Drumkit/DRUMKIT_ADD_CUSTOM';
+export const DRUMKIT_SET_CUSTOM_VALUE: 'beatMachine/Drumkit/DRUMKIT_SET_CUSTOM_VALUE' =
+  'beatMachine/Drumkit/DRUMKIT_SET_CUSTOM_VALUE';
+export const DRUMKIT_TOGGLE_SETTINGS: 'beatMachine/Drumkit/DRUMKIT_TOGGLE_SETTINGS' =
+  'beatMachine/Drumkit/DRUMKIT_TOGGLE_SETTINGS';
+export const DRUMKIT_DATABASE_CONNECTED: 'beatMachine/Drumkit/DRUMKIT_DATABASE_CONNECTED' =
+  'beatMachine/Drumkit/DRUMKIT_DATABASE_CONNECTED';
 
 export const SOUND_PLAY_ONE: 'beatMachine/Sound/SOUND_PLAY_ONE' =
   'beatMachine/Sound/SOUND_PLAY_ONE';
@@ -50,6 +60,8 @@ export const MASTER_TOGGLE_DISTORTION: 'beatMachine/Master/MASTER_TOGGLE_DISTORT
 
 export const DDP_TOGGLE_SETTINGS: 'beatMachine/Ddp/DDP_TOGGLE_SETTINGS' =
   'beatMachine/Ddp/DDP_TOGGLE_SETTINGS';
+export const DDP_SET_CONNECTED: 'beatMachine/Ddp/DDP_SET_CONNECTED' =
+  'beatMachine/Ddp/DDP_SET_CONNECTED';
 export const DDP_RECONNECT: 'beatMachine/Ddp/DDP_RECONNECT' =
   'beatMachine/Ddp/DDP_RECONNECT';
 export const DDP_TOGGLE_CONNECTED: 'beatMachine/Ddp/DDP_TOGGLE_CONNECTED' =

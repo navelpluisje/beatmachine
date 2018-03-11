@@ -5,6 +5,7 @@ import type {
   SequencerRunning,
   SequencerStepCount,
   MasterState,
+  CustomDrumkit,
 } from '../types';
 import {
   INITIAL_SETTINGS,
@@ -16,6 +17,11 @@ import {
   SEQUENCER_SET_EDIT_GROUP,
   SEQUENCER_TOGGLE_GRID,
   DRUMKIT_SET_ACTIVE,
+  DRUMKIT_LOAD_CUSTOM,
+  DRUMKIT_ADD_CUSTOM,
+  DRUMKIT_SET_CUSTOM_VALUE,
+  DRUMKIT_TOGGLE_SETTINGS,
+  DRUMKIT_DATABASE_CONNECTED,
   CHANNELS_SET_STEP,
   CHANNELS_SET_STEP_DDP,
   CHANNELS_SET_ACTIVE_CHANNEL,
@@ -25,6 +31,8 @@ import {
   SOUND_TOGGLE_SOLO,
   MASTER_SET_VOLUME,
   DDP_TOGGLE_CONNECTED,
+  DDP_SET_CONNECTED,
+  DDP_RECONNECT,
   DDP_TOGGLE_SETTINGS,
   DDP_SET_URL,
   DDP_SET_SENDING,
@@ -111,7 +119,7 @@ export type ChannelsActions =
   ChannelsSetActiveChannel |
   ChannelsSetStepDdp;
 
-export type DrumkitSetActive= {
+export type DrumkitSetActive = {
   type: typeof DRUMKIT_SET_ACTIVE,
   meta: {
     index: number,
@@ -119,8 +127,43 @@ export type DrumkitSetActive= {
   },
 }
 
+export type DrumkitSetCustomValue = {
+  type: typeof DRUMKIT_SET_CUSTOM_VALUE,
+  meta: {
+    sound: string,
+    field: string,
+    value: string | number | ArrayBuffer | null,
+  },
+}
+
+export type DrumkitLoadCustom = {
+  type: typeof DRUMKIT_LOAD_CUSTOM,
+  meta: {
+    customDrumkit: CustomDrumkit,
+  },
+}
+
+export type DrumkitAddCustom = {
+  type: typeof DRUMKIT_ADD_CUSTOM,
+  meta: {
+    sound: string,
+    drumkit: $Values<CustomDrumkit>,
+  },
+}
+
+export type DrumkitToggleSettings = {
+  type: typeof DRUMKIT_TOGGLE_SETTINGS,
+}
+
+export type DrumkitDatabaseConnected = {
+  type: typeof DRUMKIT_DATABASE_CONNECTED,
+  value: boolean,
+}
+
 export type DrumkitActions =
-  SequencerSetInitial |
+  DrumkitLoadCustom |
+  DrumkitAddCustom |
+  DrumkitSetCustomValue |
   DrumkitSetActive;
 
 
@@ -175,6 +218,15 @@ export type MasterActions =
 
 export type DdpToggleConnection = {
   type: typeof DDP_TOGGLE_CONNECTED,
+};
+
+export type DdpSetConnection = {
+  type: typeof DDP_SET_CONNECTED,
+  connected: boolean,
+};
+
+export type DdpReConnect = {
+  type: typeof DDP_RECONNECT,
   connected: boolean,
 };
 
@@ -199,10 +251,12 @@ export type DdpReceiving = {
 };
 
 export type DdpActions =
-  DdpToggleConnection |
+  DdpSetConnection |
   DdpToggleSettings |
+  DdpReConnect |
   DdpSetUrl |
-  DdpSending;
+  DdpSending |
+  DdpReceiving;
 
 export type AllActions =
   SoundsActions |

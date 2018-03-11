@@ -17,11 +17,22 @@ export type SequencerState = {
   showGrid: boolean,
 };
 
-export type Drumkit = 'TR808' | 'TR909' | 'HR16' | 'LINNDRUM';
+export type Drumkit = 'TR808' | 'TR909' | 'HR16' | 'LINNDRUM' | 'Custom';
+export type CustomDrumkit = {
+  [sound: string]: {
+    sound: string,
+    name: string,
+    drumkit: string,
+    blob: ?ArrayBuffer,
+  }
+}
 
 export type DrumkitState = {
   drumkits: Array<Drumkit>,
   active: number,
+  customDrumkit: CustomDrumkit,
+  showSettings: boolean,
+  databaseConnected: boolean,
 };
 
 export type Sound = {
@@ -57,6 +68,8 @@ export type DdpState = {
   connected: boolean,
   url: string,
   showSettings: boolean,
+  sending: boolean,
+  receiving: boolean,
 };
 
 export type GlobalState = {

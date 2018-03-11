@@ -28,7 +28,9 @@ class DdpHandler {
 
   setUrl(url: string, reconnect: boolean = false) {
     this.url = url;
-    this.close();
+    if (this.connected) {
+      this.close();
+    }
     this.createClient();
 
     if (reconnect) {
@@ -46,14 +48,15 @@ class DdpHandler {
   }
 
   createEvent() {
-    this.x = '';
-    console.log('crete event'); // eslint-disable-line
-    // const connectedEvent = new CustomEvent('ddp-connected', {
-    //   detail: {
-    //     connected: this.connected,
-    //   },
-    // });
-    // document.body.dispatchEvent(connectedEvent);
+    const { body } = document;
+    const connectedEvent = new CustomEvent('ddp-connected', {
+      detail: {
+        connected: this.connected,
+      },
+    });
+    if (body) {
+      body.dispatchEvent(connectedEvent);
+    }
   }
 
   /**

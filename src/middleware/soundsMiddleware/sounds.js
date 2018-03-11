@@ -56,4 +56,9 @@ export default class Sounds {
     this.drumkit = drumkit;
     this.sounds.forEach(sound => this.soundsList[sound].setDrumkit(drumkit));
   }
+
+  setCustomDrumkit(drumkit: string, drumkits: Object) {
+    this.drumkit = drumkit;
+    this.sounds.forEach(sound => this.soundsList[sound].setCustomDrumkit(drumkit, drumkits[sound]));
+  }
 }

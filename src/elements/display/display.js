@@ -27,7 +27,7 @@ const Display = ({ small, content, length }: Props) => (
       {Array.from(Array(length), () => '~').join('')}
     </DisplayBack>
     <DisplayText>
-      {fillContent(content, length)}
+      {content && fillContent(content, length)}
     </DisplayText>
   </StyledDisplay>
 );

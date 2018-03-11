@@ -15,7 +15,8 @@ const sequencerMiddleware = () => {
   }
 
   const worker = new Worker('js/worker.js');
-  return (store: *) => (next: Function) => (action: AllActions) => { // eslint-disable-line
+
+  return (store: *) => (next: Function) => (action: AllActions & *) => { // eslint-disable-line
     // Ignore actions that haven't specified a sound.
     if (worker.onmessage === null) {
       const { dispatch } = store;

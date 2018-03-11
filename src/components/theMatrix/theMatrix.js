@@ -2,7 +2,7 @@
 
 import React, { Fragment } from 'react';
 import { SOUNDS } from '../../constants';
-import { MatrixRow } from './atoms';
+import { MatrixRow } from './components';
 
 export default () => (
   <Fragment>
