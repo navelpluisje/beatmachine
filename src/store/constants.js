@@ -60,6 +60,8 @@ export const MASTER_TOGGLE_DISTORTION: 'beatMachine/Master/MASTER_TOGGLE_DISTORT
 
 export const DDP_TOGGLE_SETTINGS: 'beatMachine/Ddp/DDP_TOGGLE_SETTINGS' =
   'beatMachine/Ddp/DDP_TOGGLE_SETTINGS';
+export const DDP_SET_CONNECTED: 'beatMachine/Ddp/DDP_SET_CONNECTED' =
+  'beatMachine/Ddp/DDP_SET_CONNECTED';
 export const DDP_RECONNECT: 'beatMachine/Ddp/DDP_RECONNECT' =
   'beatMachine/Ddp/DDP_RECONNECT';
 export const DDP_TOGGLE_CONNECTED: 'beatMachine/Ddp/DDP_TOGGLE_CONNECTED' =

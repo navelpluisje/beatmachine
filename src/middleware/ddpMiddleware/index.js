@@ -7,7 +7,7 @@ import {
   CHANNELS_SET_STEP_DDP,
 } from '../../store/constants';
 import { getUrl } from '../../store/selectors/ddp';
-import { setSending, setReceiving } from '../../store/actions/ddp';
+import { setSending, setReceiving, setDdpConnection } from '../../store/actions/ddp';
 import { DDPException } from '../helpers/exceptions';
 import type { AllActions } from '../../store/actions/types'; // eslint-disable-line flowtype/no-types-missing-file-annotation
 
@@ -48,20 +48,24 @@ const ddpMiddleware = (url) => {
     switch (action.type) {
     case DDP_TOGGLE_CONNECTED: {
       const ddpAction = { ...action };
+      const { dispatch } = store;
+
       try {
-        const { dispatch } = store;
         if (!ddpHandler.connected) {
           ddpHandler.setUrl(getUrl(store.getState()));
           ddpHandler.connect(
             ddpAdded(dispatch),
             ddpChanged(dispatch),
           );
-          ddpAction.connected = true; //
+          ddpAction.connected = ddpHandler.connected; //
+          dispatch(setDdpConnection(ddpHandler.connected));
         } else {
           ddpAction.connected = false; //
           ddpHandler.close();
+          dispatch(setDdpConnection(false));
         }
       } catch (e) {
+        dispatch(setDdpConnection(false));
         throw new DDPException(`Error while connecting: ${e}`);
       }
       return next(ddpAction);
@@ -69,18 +73,20 @@ const ddpMiddleware = (url) => {
 
     case DDP_RECONNECT: {
       const ddpAction = { ...action };
+      const { dispatch } = store;
       ddpAction.connected = false;
       ddpHandler.setUrl(action.url);
 
       try {
-        const { dispatch } = store;
         ddpHandler.reConnect(
           ddpAdded(dispatch),
           ddpChanged(dispatch),
         );
         ddpAction.connected = true;
+        dispatch(setDdpConnection(true));
       } catch (e) {
         ddpAction.connected = false; //
+        dispatch(setDdpConnection(false));
         throw new DDPException(`Error while connecting: ${e}`);
       }
       return next(ddpAction);

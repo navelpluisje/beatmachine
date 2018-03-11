@@ -31,6 +31,7 @@ import {
   SOUND_TOGGLE_SOLO,
   MASTER_SET_VOLUME,
   DDP_TOGGLE_CONNECTED,
+  DDP_SET_CONNECTED,
   DDP_RECONNECT,
   DDP_TOGGLE_SETTINGS,
   DDP_SET_URL,
@@ -217,6 +218,10 @@ export type MasterActions =
 
 export type DdpToggleConnection = {
   type: typeof DDP_TOGGLE_CONNECTED,
+};
+
+export type DdpSetConnection = {
+  type: typeof DDP_SET_CONNECTED,
   connected: boolean,
 };
 
@@ -246,7 +251,7 @@ export type DdpReceiving = {
 };
 
 export type DdpActions =
-  DdpToggleConnection |
+  DdpSetConnection |
   DdpToggleSettings |
   DdpReConnect |
   DdpSetUrl |

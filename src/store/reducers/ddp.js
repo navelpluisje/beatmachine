@@ -1,7 +1,7 @@
 // @flow
 
 import {
-  DDP_TOGGLE_CONNECTED,
+  DDP_SET_CONNECTED,
   DDP_RECONNECT,
   DDP_TOGGLE_SETTINGS,
   DDP_SET_URL,
@@ -21,7 +21,7 @@ const defaultSettings: DdpState = {
 
 export default (state: DdpState = defaultSettings, action: DdpActions): DdpState => {
   switch (action.type) {
-  case DDP_TOGGLE_CONNECTED:
+  case DDP_SET_CONNECTED:
     return {
       ...state,
       connected: action.connected,
