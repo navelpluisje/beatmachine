@@ -43,7 +43,7 @@ export const addSound = (drumkit: Object): Promise<*> => (
       .transaction(['drumkit'], 'readwrite')
       .objectStore('drumkit');
 
-    const request = objectStore.add(drumkit);
+    const request = objectStore.put(drumkit);
 
     request.onsuccess = resolve;
     request.onerror = () => reject(Error(`${request.error.name} while adding ${drumkit.sound} from ${drumkit.drumkit}: ${request.error.message}`));

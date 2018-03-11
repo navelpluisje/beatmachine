@@ -21,7 +21,8 @@ type DispatchProps = {
 
 type OwnProps = {
   sound: string,
-}
+  id: number,
+};
 
 type Props = OwnProps & stateProps & DispatchProps;
 
@@ -35,7 +36,7 @@ class SoundUpload extends Component<Props, *> {
     const reader = new FileReader();
 
     reader.onloadend = () => {
-      this.props.setCustomValue(file.name, reader.result);
+      this.props.setCustomValue(file.name, reader.result, this.props.customSound.id || null);
     };
 
     if (file) {
@@ -102,8 +103,8 @@ const mapStateToProps = (state: GlobalState, ownProps: OwnProps): stateProps => 
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<*>, ownProps: OwnProps) => ({
-  setCustomValue: (name: string, blob: ArrayBuffer) =>
-    dispatch(saveCustomDrumkit(ownProps.sound, name, blob)),
+  setCustomValue: (name: string, blob: ArrayBuffer, id) =>
+    dispatch(saveCustomDrumkit(ownProps.sound, id, name, blob)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SoundUpload);
