@@ -13,7 +13,7 @@ import type { DdpState } from '../types';
 
 const defaultSettings: DdpState = {
   connected: false,
-  url: localStorage.getItem('ddp-url') || '127.0.0.1:3000',
+  url: localStorage.getItem('ddp-url') || 'wss://beatmachine.herokuapp.com',
   showSettings: false,
   sending: false,
   receiving: false,

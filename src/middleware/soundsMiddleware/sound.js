@@ -44,7 +44,7 @@ export default class Sound {
   }
 
   getFile() {
-    fetch(`sounds/${this.drumkit}/${this.sound}.wav`)
+    fetch(`sounds/${this.drumkit}/${this.sound}.mp3`)
       .then(response => response.arrayBuffer())
       .then((arrayBuffer) => {
         this.ac.decodeAudioData(arrayBuffer, (buffer) => {

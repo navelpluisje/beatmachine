@@ -57,8 +57,8 @@ const ddpMiddleware = (url) => {
             ddpAdded(dispatch),
             ddpChanged(dispatch),
           );
-          ddpAction.connected = ddpHandler.connected; //
-          dispatch(setDdpConnection(ddpHandler.connected));
+          ddpAction.connected = true; //ddpHandler.connected;
+          dispatch(setDdpConnection(ddpAction.connected));
         } else {
           ddpAction.connected = false; //
           ddpHandler.close();

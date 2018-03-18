@@ -28,6 +28,7 @@
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-loader": "^1.9.0",
+    "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-flowtype": "^2.41.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
@@ -44,7 +45,7 @@
     "webpack-monitor": "^1.0.14"
   },
   "dependencies": {
-    "@navelpluisje/ddp-client": "file:///Users/erwin/Documents/Workspace/node-ddp-client",
+    "@navelpluisje/ddp-client": "^0.1.0",
     "@navelpluisje/np-knob": "^2.0.1",
     "cuid": "^2.0.2",
     "react": "^16.2.0",

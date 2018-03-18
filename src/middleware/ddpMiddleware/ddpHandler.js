@@ -110,9 +110,10 @@ class DdpHandler {
         changed,
         removed,
       );
-
-      return connected;
+      return this.connected;
     });
+
+    return connected;
   }
 
   /**
