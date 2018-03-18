@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@navelpluisje/ddp-client": "^0.1.0",
-    "@navelpluisje/np-knob": "^2.0.1",
+    "@navelpluisje/np-knob": "^2.0.3",
     "cuid": "^2.0.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

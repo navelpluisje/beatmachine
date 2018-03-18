@@ -20,6 +20,7 @@ export const initializeDatabase = (): Promise<*> => (
 
     request.onupgradeneeded = (event) => {
       const db = event.target.result;
+      const { transaction } = event.target;
 
       // Create an objectStore for this database
       db.createObjectStore('drumkit', { keyPath: 'id', autoIncrement: true })
@@ -27,7 +28,8 @@ export const initializeDatabase = (): Promise<*> => (
 
       window.beatMachine.db = db;
       window.beatMachine.hasDb = true;
-      resolve(true);
+
+      transaction.oncomplete = () => resolve(true);
     };
   })
 );
