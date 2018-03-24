@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -28,6 +29,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Beatmachine',
       template: path.join(__dirname, 'src/html/index.ejs'),
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: module => (
+        module.context.indexOf('node_modules') >= 0
+      ),
     }),
   ],
   module: {
