@@ -4,10 +4,10 @@ import {
   SEQUENCER_SET_RUNNING,
   SEQUENCER_SET_STOPPED,
   SEQUENCER_SET_SPEED,
-} from '../../store/constants';
-import { setNextStep } from '../../store/actions/sequencer';
+} from '../../store/sequencer/constants';
+import { setNextStep } from '../../store/sequencer/actions';
 import { WorkerException } from '../helpers';
-import type { AllActions } from '../../store/actions/types';
+import type { AllActions } from '../../store/types';
 
 const sequencerMiddleware = () => {
   if (!window.Worker) {

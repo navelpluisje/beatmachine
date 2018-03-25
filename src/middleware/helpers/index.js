@@ -3,6 +3,7 @@
 export {
   SoundException,
   WorkerException,
+  MidiException,
 } from './exceptions';
 
 

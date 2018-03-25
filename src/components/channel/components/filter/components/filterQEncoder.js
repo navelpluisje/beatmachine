@@ -3,8 +3,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Encoder from '../../../../../elements/encoder';
-import { getFilterQ } from '../../../../../store/selectors/sounds';
-import { setSoundFilterQ } from '../../../../../store/actions/sounds';
+import { getFilterQ } from '../../../../../store/sounds/selectors';
+import { setSoundFilterQ } from '../../../../../store/sounds/actions';
 import type { GlobalState } from '../../../../../store/types';
 
 type DispatchProps = {

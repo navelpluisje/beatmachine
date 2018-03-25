@@ -3,8 +3,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import StatusLed from '../../../../../elements/statusLed';
-import { getSolo } from '../../../../../store/selectors/sounds';
-import { toggleSoundSolo } from '../../../../../store/actions/sounds';
+import { getSolo } from '../../../../../store/sounds/selectors';
+import { toggleSoundSolo } from '../../../../../store/sounds/actions';
 import type { GlobalState } from '../../../../../store/types';
 
 type DispatchProps = {

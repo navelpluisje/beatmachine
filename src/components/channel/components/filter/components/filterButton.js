@@ -3,8 +3,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import StatusLed from '../../../../../elements/statusLed';
-import { getFilter } from '../../../../../store/selectors/sounds';
-import { toggleSoundFilter } from '../../../../../store/actions/sounds';
+import { getFilter } from '../../../../../store/sounds/selectors';
+import { toggleSoundFilter } from '../../../../../store/sounds/actions';
 import type { GlobalState } from '../../../../../store/types';
 
 type DispatchProps = {

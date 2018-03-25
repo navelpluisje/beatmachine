@@ -8,11 +8,11 @@ import { Container } from './components';
 import {
   setSequencerRunning,
   setSequencerStopped,
-} from '../../../../../../store/actions/sequencer';
+} from '../../../../../../store/sequencer/actions';
 import {
   isRunning,
   isStopped,
-} from '../../../../../../store/selectors/sequencer';
+} from '../../../../../../store/sequencer/selectors';
 import Icon from '../../../../../icons';
 
 type StateProps = {

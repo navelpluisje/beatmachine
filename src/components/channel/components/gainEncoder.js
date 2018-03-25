@@ -3,8 +3,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Encoder from '../../../elements/encoder';
-import { getGain } from '../../../store/selectors/sounds';
-import { setSoundGain } from '../../../store/actions/sounds';
+import { getGain } from '../../../store/sounds/selectors';
+import { setSoundGain } from '../../../store/sounds/actions';
 import type { GlobalState } from '../../../store/types';
 
 type DispatchProps = {

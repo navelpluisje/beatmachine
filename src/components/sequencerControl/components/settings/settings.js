@@ -4,8 +4,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Container, Steps, Groups } from './components';
 import Encoder from '../../../../elements/encoder';
-import { getSpeed } from '../../../../store/selectors/sequencer';
-import { setSpeed } from '../../../../store/actions/sequencer';
+import { getSpeed } from '../../../../store/sequencer/selectors';
+import { setSpeed } from '../../../../store/sequencer/actions';
 
 type StateProps = {
   speed: number,

@@ -4,7 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Container, Controls, Drumkit } from './components';
 import Display from '../../../../elements/display';
-import { getSpeed } from '../../../../store/selectors/sequencer';
+import { getSpeed } from '../../../../store/sequencer/selectors';
 
 type StateProps = {
   speed: number,

@@ -3,8 +3,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Encoder from '../../../../../elements/encoder';
-import { getPan } from '../../../../../store/selectors/sounds';
-import { setSoundPan } from '../../../../../store/actions/sounds';
+import { getPan } from '../../../../../store/sounds/selectors';
+import { setSoundPan } from '../../../../../store/sounds/actions';
 import type { GlobalState } from '../../../../../store/types';
 
 type DispatchProps = {

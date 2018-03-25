@@ -24,4 +24,12 @@ export class DDPException extends Error {
   }
 }
 
+export class MidiException extends Error {
+  constructor(message: string) {
+    super();
+    this.name = 'MidiException';
+    this.message = message || 'A midi-error occured.';
+  }
+}
+
 export default null;

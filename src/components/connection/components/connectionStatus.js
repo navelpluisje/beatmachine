@@ -4,7 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Status, { Title as StatusTitle } from './status.styled';
 import Led from '../../../elements/led';
-import { isConnected, isSending, isReceiving } from '../../../store/selectors/ddp';
+import { isConnected, isSending, isReceiving } from '../../../store/ddp/selectors';
 import type { GlobalState } from '../../../store/types';
 
 type StateProps = {

@@ -48,6 +48,13 @@ class Encoder extends Component<Props, *> {
     this.knob.knob.addEventListener('knob-rotate', (evt: EncoderEvent) => onChange(evt.detail.value));
   }
 
+  shouldComponentUpdate(nextProps: Props) {
+    if (this.props.value !== nextProps.value) {
+      this.knob.setValue(nextProps.value);
+    }
+    return false;
+  }
+
   componentWillUnmount() {
     const { onChange } = this.props;
     this.knob.knob.removeEventListener('knob-rotate', (evt: EncoderEvent) => onChange(evt.detail.value));

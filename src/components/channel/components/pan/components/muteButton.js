@@ -3,8 +3,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import StatusLed from '../../../../../elements/statusLed';
-import { getMute } from '../../../../../store/selectors/sounds';
-import { toggleSoundMute } from '../../../../../store/actions/sounds';
+import { getMute } from '../../../../../store/sounds/selectors';
+import { toggleSoundMute } from '../../../../../store/sounds/actions';
 import type { GlobalState } from '../../../../../store/types';
 
 type DispatchProps = {

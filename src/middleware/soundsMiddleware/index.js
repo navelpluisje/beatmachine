@@ -1,15 +1,13 @@
 // @flow
 
 import Sounds from './sounds';
-import {
-  DRUMKIT_SET_ACTIVE,
-  SOUND_PLAY_ONE,
-  SEQUENCER_SET_CURRENT_STEP,
-} from '../../store/constants';
+import { DRUMKIT_SET_ACTIVE } from '../../store/drumkit/constants';
+import { SOUND_PLAY_ONE } from '../../store/sounds/constants';
+import { SEQUENCER_SET_CURRENT_STEP } from '../../store/sequencer/constants';
 import { SoundException } from '../helpers';
 import type { Sounds as SoundsType } from './types';
-import type { AllActions } from '../../store/actions/types';
-import { getCustomDrumkit } from '../../store/selectors/drumkit';
+import type { AllActions } from '../../store/types';
+import { getCustomDrumkit } from '../../store/drumkit/selectors';
 
 const soundsMiddleware = (soundsData: SoundsType) => {
   if (!Array.isArray(soundsData)) {

@@ -6,10 +6,10 @@ import {
   CHANNELS_SET_STEP,
   CHANNELS_SET_STEP_DDP,
 } from '../../store/constants';
-import { getUrl } from '../../store/selectors/ddp';
-import { setSending, setReceiving, setDdpConnection } from '../../store/actions/ddp';
+import { getUrl } from '../../store/ddp/selectors';
+import { setSending, setReceiving, setDdpConnection } from '../../store/ddp/actions';
 import { DDPException } from '../helpers/exceptions';
-import type { AllActions } from '../../store/actions/types'; // eslint-disable-line flowtype/no-types-missing-file-annotation
+import type { AllActions } from '../../store/types'; // eslint-disable-line flowtype/no-types-missing-file-annotation
 
 const ddpChanged = dispatch => (id, oldFields, clearedFields, newFields) => {
   Object.entries(newFields).forEach(([key, value]) => {

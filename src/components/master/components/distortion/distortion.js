@@ -7,11 +7,11 @@ import StatusLed from '../../../../elements/statusLed';
 import {
   setDistortion as setMasterDistortion,
   toggleDistortion as toggleMasterDistortion,
-} from '../../../../store/actions/master';
+} from '../../../../store/master/actions';
 import {
   getDistortion,
   hasDistortion as hasMasterDistortion,
-} from '../../../../store/selectors/master';
+} from '../../../../store/master/selectors';
 import type { GlobalState } from '../../../../store/types';
 
 type DispatchProps = {

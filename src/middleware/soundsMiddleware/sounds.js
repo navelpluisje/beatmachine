@@ -6,7 +6,7 @@ import type {
   Sounds as SoundsType,
   Sound as SoundType,
 } from './types';
-import type { MasterState } from '../../store/types';
+import type { MasterState } from '../../store/master';
 
 export default class Sounds {
   ac: ?AudioContext;

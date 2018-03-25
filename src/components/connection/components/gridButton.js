@@ -3,8 +3,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Button from '../../../elements/button';
-import { toggleSequencerGrid } from '../../../store/actions/sequencer';
-import { showGrid } from '../../../store/selectors/sequencer';
+import { toggleSequencerGrid } from '../../../store/sequencer/actions';
+import { showGrid } from '../../../store/sequencer/selectors';
 import Icon from '../../icons';
 import type { GlobalState } from '../../../store/types';
 

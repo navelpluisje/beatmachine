@@ -7,12 +7,12 @@ import {
   showDrumkitSettings,
   hasDatabaseConnection,
   hasCustomDrumkit,
-} from '../../../store/selectors/drumkit';
+} from '../../../store/drumkit/selectors';
 import {
   loadCustomDrumkit,
   toggleDrumkitSettings,
   setDatabaseConnection,
-} from '../../../store/actions/drumkit';
+} from '../../../store/drumkit/actions';
 import Icon from '../../icons';
 import type { GlobalState } from '../../../store/types';
 

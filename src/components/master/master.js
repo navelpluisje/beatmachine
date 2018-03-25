@@ -10,8 +10,8 @@ import {
   Logo,
 } from './components';
 import Encoder from '../../elements/encoder';
-import { setVolume as setMasterVolume } from '../../store/actions/master';
-import { getVolume } from '../../store/selectors/master';
+import { setVolume as setMasterVolume } from '../../store/master/actions';
+import { getVolume } from '../../store/master/selectors';
 import type { GlobalState } from '../../store/types';
 
 type DispatchProps = {

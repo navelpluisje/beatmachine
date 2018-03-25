@@ -6,12 +6,12 @@ import {
   getStepCount,
   getCurrentStep,
   getLoop,
-} from '../../../../../../store/selectors/sequencer';
+} from '../../../../../../store/sequencer/selectors';
 import {
   setNextStepCount,
   setPreviousStepCount,
   toggleLoop as toggleSequenceLoop,
-} from '../../../../../../store/actions/sequencer';
+} from '../../../../../../store/sequencer/actions';
 import Button from '../../../../../../elements/button';
 import StatusLed from '../../../../../../elements/statusLed';
 import { StyledSteps, StepGroup, ButtonBar } from './steps.styled';

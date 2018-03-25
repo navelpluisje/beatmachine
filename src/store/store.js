@@ -7,9 +7,9 @@ import rootReducer from './reducers';
 import soundsMiddleware from '../middleware/soundsMiddleware';
 import sequencerMiddleware from '../middleware/sequencerMiddleware';
 import ddpMiddleware from '../middleware/ddpMiddleware';
+import midiMiddleware from '../middleware/midiMiddleware';
 import { SOUNDS } from '../constants';
-import type { GlobalState } from './types';
-import type { AllActions } from './actions/types';
+import type { GlobalState, AllActions } from './types';
 
 const makeStore = (initialState: Object = {}): Store<GlobalState, AllActions> => {
   const middleware = [thunk]
@@ -28,6 +28,7 @@ const makeStore = (initialState: Object = {}): Store<GlobalState, AllActions> =>
         soundsMiddleware(SOUNDS),
         sequencerMiddleware(),
         ddpMiddleware('ws://localhost:3000', 0),
+        midiMiddleware(),
       ),
       ...composers,
     ),

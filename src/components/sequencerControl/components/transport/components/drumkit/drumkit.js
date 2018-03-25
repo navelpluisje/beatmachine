@@ -8,8 +8,8 @@ import Container, { ButtonBar } from './drumkit.styled';
 import {
   setNextDrumkit,
   setPreviousDrumkit,
-} from '../../../../../../store/actions/drumkit';
-import { getDrumkit } from '../../../../../../store/selectors/drumkit';
+} from '../../../../../../store/drumkit/actions';
+import { getDrumkit } from '../../../../../../store/drumkit/selectors';
 import Icon from '../../../../../icons';
 
 type StateProps = {

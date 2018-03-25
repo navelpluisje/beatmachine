@@ -9,9 +9,9 @@ import {
   GainEncoder,
   Pan,
 } from './components';
-import { getActiveChannel } from '../../store/selectors/channels';
-import { playSingleSound } from '../../store/actions/sounds';
-import { setChannelActive } from '../../store/actions/channels';
+import { getActiveChannel } from '../../store/channels/selectors';
+import { playSingleSound } from '../../store/sounds/actions';
+import { setChannelActive } from '../../store/channels/actions';
 import type { GlobalState } from '../../store/types';
 
 type DispatchProps = {

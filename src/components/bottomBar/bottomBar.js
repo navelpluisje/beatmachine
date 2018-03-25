@@ -6,9 +6,9 @@ import Channels from '../channels';
 import TheMatrix from '../theMatrix';
 import ConnectionSettings from '../connectionSettings';
 import CustomDrumkit from '../customDrumkit';
-import { showGrid } from '../../store/selectors/sequencer';
-import { showSettings } from '../../store/selectors/ddp';
-import { showDrumkitSettings } from '../../store/selectors/drumkit';
+import { showGrid } from '../../store/sequencer/selectors';
+import { showSettings } from '../../store/ddp/selectors';
+import { showDrumkitSettings } from '../../store/drumkit/selectors';
 
 type StateProps = {
   grid: boolean,

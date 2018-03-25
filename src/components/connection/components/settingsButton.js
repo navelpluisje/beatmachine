@@ -3,8 +3,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Button from '../../../elements/button';
-import { toggleDdpSettings } from '../../../store/actions/ddp';
-import { showSettings } from '../../../store/selectors/ddp';
+import { toggleDdpSettings } from '../../../store/ddp/actions';
+import { showSettings } from '../../../store/ddp/selectors';
 import Icon from '../../icons';
 import type { GlobalState } from '../../../store/types';
 

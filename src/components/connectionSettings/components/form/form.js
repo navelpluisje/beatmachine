@@ -6,8 +6,8 @@ import Label from '../../../../elements/label';
 import TextInput from '../../../../elements/textInput';
 import Button from '../../../../elements/button';
 import Icon from '../../../icons';
-import { getUrl } from '../../../../store/selectors/ddp';
-import { setDDPUrl, reConnect } from '../../../../store/actions/ddp';
+import { getUrl } from '../../../../store/ddp/selectors';
+import { setDDPUrl, reConnect } from '../../../../store/ddp/actions';
 
 type StateProps = {
   url: string,

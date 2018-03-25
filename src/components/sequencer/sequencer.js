@@ -4,9 +4,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Button from '../../elements/button';
 import { Container } from './components';
-import { getCurrentStep, getEditGroup } from '../../store/selectors/sequencer';
-import { setStep } from '../../store/actions/channels';
-import { isSelectedStep } from '../../store/selectors/channels';
+import { getCurrentStep, getEditGroup } from '../../store/sequencer/selectors';
+import { setStep } from '../../store/channels/actions';
+import { isSelectedStep } from '../../store/channels/selectors';
 
 type DispatchProps = {
   step: Function,

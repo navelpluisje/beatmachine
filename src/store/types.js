@@ -1,82 +1,28 @@
 // @flow
 
-export type SequencerSpeed = number;
-export type SequencerRunning = boolean;
-export type SequencerStopped = boolean;
-export type SequencerStepCount = 16 | 32 | 48 | 64;
-
-export type SequencerState = {
-  speed: SequencerSpeed,
-  isRunning: SequencerRunning,
-  isStopped: SequencerStopped,
-  stepCount: SequencerStepCount,
-  editGroup: number,
-  currentStep: number,
-  activeChannel: string,
-  loop: number,
-  showGrid: boolean,
-};
-
-export type Drumkit = 'TR808' | 'TR909' | 'HR16' | 'LINNDRUM' | 'Custom';
-export type CustomDrumkit = {
-  [sound: string]: {
-    sound: string,
-    name: string,
-    drumkit: string,
-    blob: ?ArrayBuffer,
-  }
-}
-
-export type DrumkitState = {
-  drumkits: Array<Drumkit>,
-  active: number,
-  customDrumkit: CustomDrumkit,
-  showSettings: boolean,
-  databaseConnected: boolean,
-};
-
-export type Sound = {
-  mute: boolean,
-  solo: boolean,
-  soloMute: boolean,
-  gain: number,
-  pan: number,
-  filter: boolean,
-  filterQ: number,
-  filterFreq: number,
-}
-
-export type SoundsState = {
-  [key: string]: Sound,
-}
-
-export type ChannelsState = {
-  activeChannel: string,
-  editGroup: number,
-  channels: {
-    [sound: string]: Array<boolean>,
-  },
-};
-
-export type MasterState = {
-  volume: number,
-  distortion: number,
-  hasDistortion: boolean,
-};
-
-export type DdpState = {
-  connected: boolean,
-  url: string,
-  showSettings: boolean,
-  sending: boolean,
-  receiving: boolean,
-};
+import type { ChannelsState, ChannelsActions } from './channels';
+import type { DdpState, DdpActions } from './ddp';
+import type { DrumkitState, DrumkitActions } from './drumkit';
+import type { MasterState, MasterActions } from './master';
+import type { MidiState, MidiActions } from './midi';
+import type { SequencerState, SequencerActions } from './sequencer';
+import type { SoundsState, SoundsActions } from './sounds';
 
 export type GlobalState = {
-  sequencer: SequencerState,
-  drumkit: DrumkitState,
-  sounds: SoundsState,
   channels: ChannelsState,
-  master: MasterState,
   ddp: DdpState,
+  drumkit: DrumkitState,
+  master: MasterState,
+  midi: MidiState,
+  sequencer: SequencerState,
+  sounds: SoundsState,
 }
+
+export type AllActions =
+  ChannelsActions |
+  DdpActions |
+  DrumkitActions |
+  MasterActions |
+  MidiActions |
+  SequencerActions |
+  SoundsActions;

@@ -3,8 +3,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { StyledGroup, GroupButton } from './groups.styled';
-import { setSequencerEditGroup } from '../../../../../../store/actions/sequencer';
-import { getEditGroup } from '../../../../../../store/selectors/sequencer';
+import { setSequencerEditGroup } from '../../../../../../store/sequencer/actions';
+import { getEditGroup } from '../../../../../../store/sequencer/selectors';
 import type { GlobalState } from '../../../../../../store/types';
 
 type StateProps = {

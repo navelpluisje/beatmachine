@@ -3,9 +3,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import StyledMatrixRow from './matrixRow.styled';
-import { getCurrentStep, getEditGroup } from '../../../../store/selectors/sequencer';
-import { setStep } from '../../../../store/actions/channels';
-import { isSelectedStep } from '../../../../store/selectors/channels';
+import { getCurrentStep, getEditGroup } from '../../../../store/sequencer/selectors';
+import { setStep } from '../../../../store/channels/actions';
+import { isSelectedStep } from '../../../../store/channels/selectors';
 import MatrixButton from '../matrixButton';
 import MatrixLabel from '../matrixLabel';
 
