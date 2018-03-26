@@ -8,6 +8,7 @@ import {
   Switch,
   GridSettings,
   GridButton,
+  MidiButton,
   DrumkitButton,
   SettingsButton,
   ConnectionButton,
@@ -27,6 +28,7 @@ const Connection = () => (
     <GridSettings>
       <GridButton />
       <DrumkitButton />
+      <MidiButton />
     </GridSettings>
   </Container>
 );

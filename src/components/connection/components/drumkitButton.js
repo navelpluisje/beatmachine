@@ -64,6 +64,7 @@ class CustomDrumkit extends Component<Props, *> {
       <Button
         active={this.getButtonActive()}
         color={this.getButtonColor()}
+        size="narrow"
         onClick={toggleCustomDrumkit}
       >
         <Icon icon="drumkit" />

@@ -4,6 +4,7 @@ import Container, { Title, Content } from './container.styled';
 import Status, { Title as StatusTitle, Switch } from './status.styled';
 import GridSettings from './gridSettings.styled';
 import GridButton from './gridButton';
+import MidiButton from './midiButton';
 import DrumkitButton from './drumkitButton';
 import SettingsButton from './settingsButton';
 import ConnectionButton from './connectionButton';
@@ -18,6 +19,7 @@ export {
   Switch,
   GridSettings,
   GridButton,
+  MidiButton,
   DrumkitButton,
   SettingsButton,
   ConnectionButton,

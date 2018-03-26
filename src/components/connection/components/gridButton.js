@@ -25,6 +25,7 @@ const Connection = ({
   <Button
     active={grid}
     color="yellow"
+    size="narrow"
     onClick={toggleGrid}
   >
     <Icon icon="grid" />

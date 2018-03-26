@@ -1,8 +1,7 @@
 // @flow
 
-import { MIDI_SET_INPUT } from '../../store/midi/constants';
-import { MASTER_SET_DISTORTION } from '../../store/master/constants';
-import { setMidiAvailable, setActiveInput } from '../../store/midi/actions';
+import { MIDI_SET_DEVICE, MIDI_SET_PORT } from '../../store/midi/constants';
+import { setMidiAvailable } from '../../store/midi/actions';
 import { MidiException } from '../helpers';
 import MidiHandler from './midiHandler';
 import type { AllActions } from '../../store/types';
@@ -28,14 +27,16 @@ const midiMiddleware = () => {
     }
 
     switch (action.type) {
-    case MIDI_SET_INPUT:
+    case MIDI_SET_DEVICE:
       if (midiHandler !== null) {
-        midiHandler.setMidiDevice(action.meta.id);
+        midiHandler.setMidiDevice(action.meta.deviceId);
       }
       break;
 
-    case MASTER_SET_DISTORTION:
-      store.dispatch(setActiveInput('1227536362'));
+    case MIDI_SET_PORT:
+      if (midiHandler !== null) {
+        midiHandler.setMidiPort(action.meta.port);
+      }
       break;
 
     default:

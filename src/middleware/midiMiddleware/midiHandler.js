@@ -1,4 +1,4 @@
-import { setInputs, setOutputs } from '../../store/midi/actions';
+import { setInputs } from '../../store/midi/actions';
 import { playSingleSound, setSetting, toggleSetting } from '../../store/sounds/actions';
 import { setNextDrumkit } from '../../store/drumkit/actions';
 
@@ -83,8 +83,10 @@ class MidiHandler {
       .from(midiAccess.outputs)
       .map(output => output[1]);
 
-    this.dispatch(setInputs(this.inputs));
-    this.dispatch(setOutputs(this.outputs));
+    this.dispatch(setInputs(this.inputs.map(({ id, name }) => ({
+      id,
+      name,
+    }))));
   }
 
   setMidiDevice(id) {
@@ -99,9 +101,20 @@ class MidiHandler {
     }
   }
 
+  setMidiPort(port) {
+    if (port === 0) {
+      this.port = null;
+    } else {
+      this.port = (port - 1).toString(16);
+    }
+  }
+
   static substractCommand(command) {
-    const cmd = command.toString(16);
-    return cmd[0];
+    const [cmd, port] = command.toString(16);
+    return {
+      cmd,
+      port,
+    };
   }
 
   static splitControlKey(key) {
@@ -116,7 +129,11 @@ class MidiHandler {
     const [cmd, key, value] = message.data;
     const command = MidiHandler.substractCommand(cmd);
 
-    switch (command) {
+    if (this.port !== null && command.port !== this.port) {
+      return false;
+    }
+
+    switch (command.cmd) {
     case NOTE_ON:
       this.dispatch(playSingleSound(SOUNDS[key]));
       break;

@@ -53,6 +53,10 @@ export default styled.button`
     }
   `};
 
+  ${(props: Props) => props.size === 'narrow' && css`
+    padding: .5rem;
+  `};
+
   ${(props: Props) => props.active && props.color && buttonActiveState(props)};
 
   &:focus {

@@ -2,16 +2,16 @@
 
 import {
   MIDI_SET_INPUTS,
-  MIDI_SET_OUTPUTS,
-  MIDI_SET_INPUT,
+  MIDI_SET_DEVICE,
   MIDI_SET_AVAILABLE,
+  MIDI_TOGGLE_SETTINGS,
+  MIDI_SET_PORT,
 } from './constants';
-import { MASTER_TOGGLE_DISTORTION } from '../master/constants';
 import type {
-  SetActiveInput,
+  SetActiveDevice,
   SetMidiAvailable,
   SetInputs,
-  SetOutputs,
+  SetPort,
 } from './types';
 
 export const setMidiAvailable = (hasMidi: boolean = false): SetMidiAvailable => ({
@@ -28,22 +28,22 @@ export const setInputs = (inputs: Array<Object>): SetInputs => ({
   },
 });
 
-export const setOutputs = (outputs: Array<Object>): SetOutputs => ({
-  type: MIDI_SET_OUTPUTS,
+export const setActiveDevice = (deviceId: string): SetActiveDevice => ({
+  type: MIDI_SET_DEVICE,
   meta: {
-    outputs,
+    deviceId,
   },
 });
 
-export const setActiveInput = (id: string): SetActiveInput => ({
-  type: MIDI_SET_INPUT,
+export const setPort = (port: number): SetPort => ({
+  type: MIDI_SET_PORT,
   meta: {
-    id,
+    port,
   },
 });
 
-export const toggleDistortion = () => ({
-  type: MASTER_TOGGLE_DISTORTION,
+export const toggleSettings = () => ({
+  type: MIDI_TOGGLE_SETTINGS,
 });
 
 export default null;

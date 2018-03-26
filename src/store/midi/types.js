@@ -3,12 +3,15 @@
 import {
   MIDI_SET_AVAILABLE,
   MIDI_SET_INPUTS,
-  MIDI_SET_OUTPUTS,
-  MIDI_SET_INPUT,
+  MIDI_SET_DEVICE,
+  MIDI_TOGGLE_SETTINGS,
+  MIDI_SET_PORT,
 } from './constants';
 
-export type MIDIInput = Object;
-export type MIDIOutput = Object;
+export type MIDIInput = {
+  id: string,
+  name: string,
+};
 
 export type SetMidiAvailable = {
   type: typeof MIDI_SET_AVAILABLE,
@@ -24,28 +27,35 @@ export type SetInputs = {
   },
 };
 
-export type SetOutputs = {
-  type: typeof MIDI_SET_OUTPUTS,
+export type SetActiveDevice = {
+  type: typeof MIDI_SET_DEVICE,
   meta: {
-    outputs: Array<MIDIOutput>,
+    deviceId: string,
   },
 };
 
-export type SetActiveInput = {
-  type: typeof MIDI_SET_INPUT,
+export type ToggleMidiSettings = {
+  type: typeof MIDI_TOGGLE_SETTINGS,
+};
+
+export type SetPort = {
+  type: typeof MIDI_SET_PORT,
   meta: {
-    id: string,
+    port: number,
   },
 };
 
 export type MidiActions =
-  SetActiveInput |
+  SetActiveDevice |
   SetMidiAvailable |
   SetInputs |
-  SetOutputs;
+  ToggleMidiSettings |
+  SetPort;
 
 export type MidiState = {
   inputs: Array<MIDIInput>,
-  outputs: Array<MIDIOutput>,
   hasMidi: boolean,
+  showSettings: boolean,
+  activeDevice: string,
+  port: number,
 }

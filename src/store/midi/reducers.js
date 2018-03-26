@@ -2,15 +2,19 @@
 
 import {
   MIDI_SET_INPUTS,
-  MIDI_SET_OUTPUTS,
   MIDI_SET_AVAILABLE,
+  MIDI_TOGGLE_SETTINGS,
+  MIDI_SET_DEVICE,
+  MIDI_SET_PORT,
 } from './constants';
 import type { MidiState, MidiActions } from './types';
 
-const initialState = {
+const initialState: MidiState = {
   inputs: [],
-  outputs: [],
   hasMidi: false,
+  showSettings: false,
+  activeDevice: '',
+  port: 0,
 };
 
 export default (state: MidiState = initialState, action: MidiActions): MidiState => {
@@ -21,16 +25,28 @@ export default (state: MidiState = initialState, action: MidiActions): MidiState
       inputs: action.meta.inputs,
     };
 
-  case MIDI_SET_OUTPUTS:
-    return {
-      ...state,
-      outputs: action.meta.outputs,
-    };
-
   case MIDI_SET_AVAILABLE:
     return {
       ...state,
       hasMidi: action.meta.hasMidi,
+    };
+
+  case MIDI_TOGGLE_SETTINGS:
+    return {
+      ...state,
+      showSettings: !state.showSettings,
+    };
+
+  case MIDI_SET_DEVICE:
+    return {
+      ...state,
+      activeDevice: action.meta.deviceId,
+    };
+
+  case MIDI_SET_PORT:
+    return {
+      ...state,
+      port: action.meta.port,
     };
 
   default:
