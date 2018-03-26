@@ -17,6 +17,7 @@ const icons = {
   arrowLeft: '\\e900',
   arrowRight: '\\e901',
   drumkit: '\\e928',
+  midi: '\\e9bc',
 };
 
 export default styled.i`

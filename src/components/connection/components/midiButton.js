@@ -32,7 +32,7 @@ const Connection = ({
         size="narrow"
         onClick={toggle}
       >
-        <Icon icon="play" />
+        <Icon icon="midi" />
       </Button>
     }
   </Fragment>
