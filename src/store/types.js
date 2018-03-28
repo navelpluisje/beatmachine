@@ -25,4 +25,5 @@ export type AllActions =
   MasterActions |
   MidiActions |
   SequencerActions |
-  SoundsActions;
+  SoundsActions |
+  Function;

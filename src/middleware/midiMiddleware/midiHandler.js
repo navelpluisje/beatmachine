@@ -73,6 +73,12 @@ class MidiHandler {
     } else {
       console.error('Whaaaaat????????');
     }
+    midiAccess.onstatechange = this.onConnectionChange;
+  }
+
+  onConnectionChange = (connectionEvent) => {
+    const midiAccess = connectionEvent.target;
+    this.onMIDISuccess(midiAccess);
   }
 
   onMIDISuccess = (midiAccess) => {

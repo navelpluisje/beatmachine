@@ -19,11 +19,15 @@ const initialState: MidiState = {
 
 export default (state: MidiState = initialState, action: MidiActions): MidiState => {
   switch (action.type) {
-  case MIDI_SET_INPUTS:
+  case MIDI_SET_INPUTS: {
+    const hasInputs = action.meta.inputs.length > 0;
     return {
       ...state,
       inputs: action.meta.inputs,
+      hasMidi: hasInputs,
+      showSettings: hasInputs ? state.showSettings : false,
     };
+  }
 
   case MIDI_SET_AVAILABLE:
     return {

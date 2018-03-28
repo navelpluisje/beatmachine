@@ -1,16 +1,14 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const GoogleFontsPlugin = require('google-fonts-webpack-plugin');
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
     beatmachine: [
       'babel-polyfill',
       './src/index.js',
-    ],
-    worker: [
-      './assets/worker/worker.js',
     ],
   },
   output: {
@@ -24,33 +22,48 @@ module.exports = {
     ],
   },
   devtool: 'source-map',
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          name: 'vendor',
+          chunks: 'initial',
+          minChunks: 2,
+        },
+      },
+    },
+  },
   plugins: [
-    new ExtractTextPlugin('styles.css'),
+    // new CleanWebpackPlugin(['dist']),
+    new CopyWebpackPlugin([
+      { from: 'src/assets/sounds', to: 'sounds' },
+      { from: 'src/assets/favicon.ico', to: '' },
+    ]),
     new HtmlWebpackPlugin({
       title: 'Beatmachine',
       template: path.join(__dirname, 'src/html/index.ejs'),
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: module => (
-        module.context.indexOf('node_modules') >= 0
-      ),
+    new GoogleFontsPlugin({
+      fonts: [
+        { family: 'Racing Sans One' },
+        { family: 'Roboto Condensed', variants: ['400', '300'] },
+      ],
+      filename: 'css/fonts.css',
+      formats: ['woff2'],
+      path: 'fonts/',
     }),
   ],
   module: {
     rules: [
       {
+        test: /\.worker\.js$/,
+        use: { loader: 'worker-loader' },
+      }, {
         test: /\.js$/,
         exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader?presets[]=react,presets[]=es2015,presets[]=stage-0',
-          },
-          {
-            loader: 'eslint-loader',
-            options: {
-              failOnError: false,
-            },
           },
           {
             loader: 'source-map-loader',
@@ -67,9 +80,13 @@ module.exports = {
         }],
       }, {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: [
-          'file-loader',
-        ],
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: 'fonts/[name].[ext]',
+            limit: 10,
+          },
+        }],
       }, {
         test: /\.svg$/,
         loader: 'svg-inline-loader',

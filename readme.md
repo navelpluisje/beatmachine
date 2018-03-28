@@ -17,7 +17,7 @@ Or start playing @ [https://play.beatmachine.net](https://play.beatmachine.net)
 ### Libs used
 
 * [npKnob](https://bitbucket.org/Navelpluisje/npknob) by **Me**
-* ddp-client forked and modified. Currently not released
+* [ddp-client](https://bitbucket.org/Navelpluisje/ddp-client/src/master/) forked and modified.
 
 ### Fonts
 

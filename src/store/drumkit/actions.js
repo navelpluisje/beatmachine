@@ -53,7 +53,7 @@ export const setDrumkitDatabaseConnected = (): DrumkitDatabaseConnected => ({
 
 export const setNextDrumkit = (index?: number) => (dispatch: Function, getState: Function) => {
   const state = getState();
-  let id = index;
+  let id: number = index || 0;
   if (index === undefined) {
     id = getNextDrumkitIndex(state);
   }
