@@ -71,7 +71,7 @@ class MidiHandler {
     if (midiAccess.inputs) {
       this.onMIDISuccess(midiAccess);
     } else {
-      console.error('Whaaaaat????????');
+      console.warn('Whaaaaat, no MIDI inputs available');
     }
     midiAccess.onstatechange = this.onConnectionChange;
   }

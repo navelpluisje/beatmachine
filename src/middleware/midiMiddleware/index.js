@@ -2,7 +2,6 @@
 
 import { MIDI_SET_DEVICE, MIDI_SET_PORT } from '../../store/midi/constants';
 import { setMidiAvailable } from '../../store/midi/actions';
-import { MidiException } from '../helpers';
 import MidiHandler from './midiHandler';
 import type { AllActions } from '../../store/types';
 
@@ -14,7 +13,7 @@ const midiMiddleware = () => {
   if (navigator.requestMIDIAccess) {
     hasMidi = true;
   } else {
-    throw new MidiException('Web workers are not supported in ypur browser, but needed for tis application');
+    console.warn('MIDI is not supported in your browser. So you will not be able to use a MIDI-controler');
   }
 
   return (store: *) => (next: Function) => (action: AllActions) => { // eslint-disable-line
