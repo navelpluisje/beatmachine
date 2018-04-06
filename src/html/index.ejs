@@ -1,8 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-47813062-8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-47813062-8');
+    </script>
+
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     <title><%= htmlWebpackPlugin.options.title %></title>
+
+    <!-- Twitter card -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:url" content="https://play.beatmachine.net/">
+	<meta name="twitter:title" content="Beatmachine">
+	<meta name="twitter:description" content="A midi-controlable drumsequencer build with javascript">
+	<meta name="twitter:image" content="https://beatmachine.net/img/topbar.png">
+	<meta name="twitter:creator" content="@navelpluisje_nl">
+	<meta name="twitter:site" content="@navelpluisje_nl">
+	<!-- Some open graph data -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://play.beatmachine.net/">
+	<meta property="og:title" content="Beatmachine">
+	<meta property="og:description" content="A midi-controlable drumsequencer build with javascript">
+	<meta property="og:image" content="https://beatmachine.net/img/topbar.png">
+
 </head>
 <body>
     <section id="beat-machine"></section>
